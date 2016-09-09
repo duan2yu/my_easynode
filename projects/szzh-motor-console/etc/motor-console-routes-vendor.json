@@ -1,0 +1,47 @@
+[
+        {
+                "comment" : "厂商列表查询",
+                "id" : "LIST_VENDOR",
+                "uri": "/api/vendor/list",
+                "http-method": "get",
+                "controller": "$vendorController",
+                "handler": "listVendors",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "删除厂商",
+                "id" : "DELETE_VENDOR",
+                "uri": "/api/vendor/delete/:id",
+                "http-method": "get",
+                "controller": "$vendorController",
+                "handler": "deleteVendor",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "创建厂商",
+                "id" : "CREATE_VENDOR",
+                "uri": "/api/vendor/create",
+                "http-method": "get/post",
+                "controller": "$vendorController",
+                "handler": "createVendor",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "更新厂商资料",
+                "id" : "UPDATE_VENDOR",
+                "uri": "/api/vendor/update/:id",
+                "http-method": "get/post",
+                "controller": "$vendorController",
+                "handler": "updateVendor",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "读取厂商详细数据",
+                "id" : "READ_VENDOR",
+                "uri": "/api/vendor/info/:id",
+                "http-method": "get",
+                "controller": "$vendorController",
+                "handler": "readVendorInfo",
+                "filters" : ["$privilegeFilter"]
+        }
+]

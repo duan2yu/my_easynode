@@ -1,0 +1,80 @@
+[
+  {
+    "type": "get/post",
+    "url": "/api/admin/login",
+    "title": "管理员登录",
+    "name": "adminLogin",
+    "group": "Session_Management",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "adminId",
+            "description": "<p>管理员用户名</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "adminPwd",
+            "description": "<p>管理员密码</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "smsCaptcha",
+            "description": "<p>短信验证码（调用前请先使用短信验证码下发接口下发短信验证码）</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "<p>Number</p> ",
+            "optional": false,
+            "field": "id",
+            "description": "<p>管理员用户ID</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "name",
+            "description": "<p>管理员用户名</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "realName",
+            "description": "<p>管理员姓名</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "mobile",
+            "description": "<p>管理员手机号码</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>Array</p> ",
+            "optional": false,
+            "field": "privileges",
+            "description": "<p>管理员权限，字符串数组</p> "
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "../sub-systems/admin-console/src/cn/beneverse/xzcxw/admin/controllers/AdminSessionController.js",
+    "groupTitle": "Session_Management"
+  }
+]

@@ -1,0 +1,28 @@
+{
+        "apps": [
+                {
+                        "name": "CBB100H-DataWriter",
+                        "script": "main.js",
+                        "args": [
+                                "--debug-output=false",
+                                "--src-dirs=projects/szzh/src",
+                                "--main-class=szzh.cbb100.CBB100DWMain",
+                                "--config-files=projects/szzh/etc/cbb100-dw/cbb100-dw.conf"
+                        ],
+                        "pid_file": "CBB100H-DataWriter.pid",
+                        "instances": 1,
+                        "watch": false,
+                        "node_args": "--harmony",
+                        "log_date_format": "",
+                        "log_file": "../logs/CBB100H-DataWriter.log",
+                        "merge_logs": true,
+                        "min_uptime": "30s",
+                        "max_memory_restart": "1G",
+                        "autorestart": true,
+                        "cwd": "../../../bin",
+                        "env": {
+                        },
+                        "next_gen_js": true
+                }
+        ]
+}

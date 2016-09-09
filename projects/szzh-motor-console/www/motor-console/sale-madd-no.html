@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>展华科技产品代理商管理系统</title>
+  <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+  <!-- Bootstrap 3.3.2 -->
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <!-- FontAwesome 4.3.0 -->
+  <link href="plugins/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <!-- Theme style -->
+  <link href="css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link href="css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+  <!-- Date Picker -->
+  <link href="plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+  <!-- Daterange picker -->
+  <link href="plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+  <!-- bootstrap checkbox -->
+  <link href="plugins/bootstrap-checkbox/css/bootstrap-checkbox.css" rel="stylesheet" type="text/css" />
+  <link href="css/app.css" rel="stylesheet" />
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="http://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+<script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
+<script src="js/diandongche.js" type="text/javascript"></script>
+</head>
+<body class="skin-blue" >
+<div class="wrapper">
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="/" class="logo">展华代理商管理系统</a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">切换侧边栏</span>
+      </a>
+      
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu" id="sidebar-menu">
+      
+    </ul>
+    <script>
+        ddche.leftNav();
+    </script>
+  </section>
+  <!-- /.sidebar -->
+</aside>
+    <!--********************************************************************************************** -->
+<aside class="right-side">
+    <section class="content-header">
+<div class="box box-success">
+    <div class="box-header">
+      <h3 class="box-title">设备查询(已售)</h3>
+    </div>
+    <div class="box-body table-responsive no-padding">
+      <div class="box-body form-horizontal" style="padding: 10px 15px;" >
+          <div class="form-group">
+            <label class="col-sm-3 control-label">查询类型</label>
+            <div class="col-sm-6">
+              <select class="form-control device-search-sType">
+                  <option value="1">模糊查询</option>
+                  <option value="2">精确查询</option>
+              </select>
+            </div>
+          </div>
+        <form role="form" action="/api/device/queryUninstalled" method="get" data-parsley-validate target="formIframe">
+          <input type="hidden" name="page" value="1">
+           <div class="form-group">
+            <label class="col-sm-3 control-label">生成批次</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="batch" placeholder="" >
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">厂商名称</label>
+            <div class="col-sm-6">
+              <select class="form-control vendorSelect" name="vendorId">
+              </select>
+            </div>
+          </div>
+            <div class="form-group">
+            <label class="col-sm-3 control-label">展华出库时间</label>
+            <div class="col-xs-3">
+              <input type="text" class="form-control" id="saleStart" onclick="laydate()" name="inventoryOutTimeBegin" >
+            </div>
+            <div class="z-to">至</div>
+            <div class="col-xs-3">
+              <input type="text" class="form-control" id="saleEnd" onclick="laydate()" name="inventoryOutTimeEnd">
+            </div>
+          </div>
+            
+          <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+              <button type="submit" class="btn btn-primary">查询</button>
+            </div>
+          </div>
+        </form>
+         <form role="form" action="/api/device/queryInstalled" method="get" data-parsley-validate target="formIframe" style="display:none;">
+          <input type="hidden" name="page" value="1">
+        
+            <div class="form-group" id="device-search-sImei">
+            <label class="col-sm-3 control-label">设备IMEI</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="IMEI" placeholder=""  >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+              <button type="submit" class="btn btn-primary">查询</button>
+            </div>
+          </div>
+        </form>
+         <iframe id="formIframe" name="formIframe" rel="ajaxSearch" call="deviceSearch" style="display:none;"></iframe>
+      </div>
+      <div class="box-body">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                    <th>型号</th>
+                    <th>iMEI号</th>
+                    <th>生成批次</th>
+                    <th>入库日期</th>
+                    <th>出库日期</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody  id="cont">
+              </tbody>
+            </table>
+             <table style="display:none;">
+                <tbody id="temp-search" >
+                  <tr rel="{id}">
+                      <td>{deviceType}</td>
+                      <td>{imei}</td>
+                      <td>{batch}</td>
+                      <td>{inventoryInTime}</td>
+                      <td>{inventoryOutTime}</td>
+                      <td><a href="device-editor.html?imei={imei}&deviceEditor=true">编辑</a>&nbsp;<a href="javascript:" class="contral_delete" action="/api/device/delete/{imei}" msg="设备已出售，请告知厂商删除信息！">删除</a></td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="box-footer clearfix">
+            <ul class="pagination pagination-sm no-margin pull-right" id="page">
+
+            </ul>
+        </div>
+    </div>
+    <div class="box-footer clearfix">
+    </div>
+  </div><!-- /.box (chat box) -->
+    </section>
+  </aside>
+    <!--********************************************************************************************** -->
+
+</div><!-- /.content -->
+</div><!-- /.content-wrapper -->
+<footer class="main-footer">
+  <div class="pull-right hidden-xs">
+    <b>电话：0755-82049709&nbsp;&nbsp;邮箱：zhanhuakj@foxmail.com&nbsp;&nbsp;深圳市车公庙天安数码时代大厦A座2207-2208号</b>
+  </div>
+  <strong>Copyright &copy; 2014-2025 <a href="#">深圳市展华科技有限公司</a>.</strong>
+</footer>
+</div><!-- ./wrapper -->
+
+
+<div class="modal fade" tabindex="-1" role="dialog" data-toggle="modal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary modal-confirm" data-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- jQuery 2.1.3 -->
+<!-- parsley.js -->
+<script>
+window.ParsleyConfig = {
+  errorsWrapper: '<span class="parsley-error"></span>',
+  errorTemplate: '<span></span>'
+};
+</script>
+<script src="plugins/bower_components/parsleyjs/dist/parsley.js"></script>
+<script src="plugins/bower_components/parsleyjs/src/i18n/zh_cn.js"></script>
+<!-- jQuery UI 1.11.2 -->
+<script src="plugins/jQueryUI/jquery-ui.min.js" type="text/javascript"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.2 JS -->
+<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<!-- Bootstrap-Checkbox -->
+<script src="plugins/bootstrap-checkbox/js/bootstrap-checkbox.js" type="text/javascript"></script>
+<!-- Sparkline -->
+<script src="plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+<!-- daterangepicker -->
+<script src="plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+<!-- datepicker -->
+<script src="plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
+<!-- Slimscroll -->
+<script src="plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<!-- FastClick -->
+<script src='plugins/fastclick/fastclick.min.js'></script>
+<!-- Momentjs-->
+<script src='plugins/moment/moment.js'></script>
+<!-- Jquery serializeJson-->
+<script src="plugins/serialize-object/jquery.serialize-object.min.js"></script>
+<!-- AdminLTE App -->
+<script src="js/app.min.js" type="text/javascript"></script>
+</body>
+</html>

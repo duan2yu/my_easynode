@@ -1,0 +1,23 @@
+[
+        {
+                "comment" : "管理员登录",
+                "uri": "/api/admin/login",
+                "http-method": "get/post",
+                "controller": "$adminSessionController",
+                "handler": "login"
+        },
+        {
+                "comment" : "管理员登出",
+                "uri": "/api/admin/logout",
+                "http-method": "get",
+                "controller": "$adminSessionController",
+                "handler": "logout"
+        },
+        {
+                "comment" : "获取当前登录的管理员",
+                "uri": "/api/admin/getLoginUser",
+                "http-method": "get",
+                "controller": "$adminSessionController",
+                "handler": "getLoginUser"
+        }
+]

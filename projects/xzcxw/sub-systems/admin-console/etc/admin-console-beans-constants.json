@@ -1,0 +1,19 @@
+{
+        "constants" : {
+                "class" : "easynode.Notation",
+                "scope" : "singleton",
+                "props" : {
+                }
+        },
+        "simulatedLoginUser" : {
+                "class" : "easynode.Notation",
+                "scope" : "singleton",
+                "props" : {
+                        "id" : 1,
+                        "name" : "admin",
+                        "realName" : "系统管理员",
+                        "mobile" : "17658187318",
+                        "privileges" : ["*"]
+                }
+        }
+}

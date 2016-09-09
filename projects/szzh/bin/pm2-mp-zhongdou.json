@@ -1,0 +1,29 @@
+{
+        "apps": [
+                {
+                        "name": "MessagePush-ZhongDou",
+                        "script": "main.js",
+                        "args": [
+                                "--debug-output=false",
+                                "--src-dirs=projects/szzh/src",
+                                "--main-class=szzh.mp.MessagePushMain",
+                                "--config-files=projects/szzh/etc/mp/message-push-zhongdou.conf",
+                                "--http.port==5000"
+                        ],
+                        "pid_file": "MessagePush-ZhongDou.pid",
+                        "instances": 1,
+                        "watch": false,
+                        "node_args": "--harmony",
+                        "log_date_format": "",
+                        "log_file": "../logs/MessagePush-ZhongDou.log",
+                        "merge_logs": true,
+                        "min_uptime": "30s",
+                        "max_memory_restart": "1G",
+                        "autorestart": true,
+                        "cwd": "../../../bin",
+                        "env": {
+                        },
+                        "next_gen_js": true
+                }
+        ]
+}

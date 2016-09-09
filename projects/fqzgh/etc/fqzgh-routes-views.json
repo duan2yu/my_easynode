@@ -1,0 +1,32 @@
+[
+        {
+                "comment" : "首页",
+                "id" : "home",
+                "uri": "/",
+                "http-method": "get",
+                "controller": "$none",
+                "handler": "$none",
+                "content-type" : "text/html",
+                "view" : "home.swig"
+        },
+        {
+                "comment" : "PJAX测试页",
+                "id" : "testPjax",
+                "uri": "/page2",
+                "http-method": "get",
+                "controller": "$none",
+                "handler": "$none",
+                "content-type" : "text/html",
+                "view" : "page2.swig"
+        },
+        {
+                "comment" : "PJAX测试页",
+                "id" : "testPjax3",
+                "uri": "/page3",
+                "http-method": "get",
+                "controller": "$none",
+                "handler": "$none",
+                "content-type" : "text/html",
+                "view" : "page3.swig"
+        }
+]

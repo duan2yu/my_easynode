@@ -1,0 +1,11 @@
+[
+        {
+                "comment" : "发送短信",
+                "id": "PLUGIN_SMS_HAOSERVICE_SEND_SMS",
+                "uri": "/api/plugin/sms-haoservice/send",
+                "http-method": "get/post",
+                "controller": "$smsHaoServiceController",
+                "handler": "send",
+                "filters" : []
+        }
+]

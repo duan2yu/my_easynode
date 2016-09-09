@@ -1,0 +1,8 @@
+{
+        "rbacController" : {
+                "class" : "plugin:rbac@0.0.1@cn.beneverse.easynode.plugin.rbac.Controller",
+                "scope" : "singleton",
+                "props" : {
+                }
+        }
+}

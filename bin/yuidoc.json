@@ -1,0 +1,13 @@
+{
+        "name": "EasyNode API参考文档",
+        "description": "EasyNode API文档",
+        "version": "EasyNode - 0.1.0",
+        "options": {
+                "linkNatives": "true",
+                "attributesEmit": "true",
+                "paths": [
+                        "../src"
+                ],
+                "outdir": "../docs"
+        }
+}

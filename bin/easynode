@@ -1,0 +1,53 @@
+#!/bin/sh
+
+module=$1
+executed="0"
+
+##example ./easynode plugin enable/disable sys
+plugin() {
+        pluginCmd=$1
+        pluginName=$2
+
+        if [ -d "../plugins/$pluginName/" ]; then
+                if [ "$pluginCmd" = "enable" ]; then
+                        executed="1"
+                        rm -fr ../plugins/$pluginName/.ignore
+                        echo "plugin $pluginName enabled"
+                fi
+
+                if [ "$pluginCmd" = "disable" ]; then
+                        executed="1"
+                        echo -n '' > ../plugins/$pluginName/.ignore
+                        echo "plugin $pluginName disabled"
+                fi
+        else
+                executed="1"
+                echo "plugin $pluginName not found"
+        fi
+
+        if [ "$executed" = "0" ]; then
+                echo "unknown plugin command $pluginCmd"
+                executed="1"
+        fi
+}
+
+help() {
+        echo 'easynode cli HELP output'
+        echo 'command arguments:'
+        echo '\t help/? \t\t\t\t: Print this help text'
+        echo '\t plugin enable/disable [PluginName] \t: Enable or Disable plugin'
+        executed="1"
+}
+
+if [ $module = "plugin" ]; then
+        plugin $2 $3
+fi
+
+if [ $module = "help" -o $module = "?" ]; then
+        help
+fi
+
+if [ "$executed" = "0" ]; then
+        echo "unknown plugin command $pluginCmd"
+        executed="1"
+fi

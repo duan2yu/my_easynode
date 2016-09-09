@@ -1,0 +1,93 @@
+{
+        "httpServer" : {
+                "class" : "easynode.framework.server.http.KOAHttpServer",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        {
+                                "port" : "$int(admin.console.httpServer.port)",
+                                "enableDefaultWebRoot" : true,
+                                "sessionStorage" : "$sessionStorage",
+                                "routeMapEntry" : "projects/xzcxw/sub-systems/admin-console/etc/admin-console-routes.json"
+                        }
+                ],
+                "props" : {
+                }
+        },
+        "bookshelf" : {
+                "class" : "easynode.framework.db.Bookshelf",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        {
+                                "host" : "$str(admin.console.db.host)",
+                                "port" : "$int(admin.console.db.port)",
+                                "user" : "$str(admin.console.db.user)",
+                                "password" : "$str(admin.console.db.password)",
+                                "database" : "$str(admin.console.db.database)",
+                                "minConnections" : "$int(admin.console.db.minConnections)",
+                                "maxConnections" : "$int(admin.console.db.maxConnections)"
+                        }
+                ],
+                "props" : {
+                }
+        },
+        "mq" : {
+                "class" : "easynode.framework.mq.RedisListQueue",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        "$str(redis.host)",
+                        "$int(redis.port)",
+                        {
+                                "masterName" : "$str(redis.masterName)",
+                                "auth_pass" : "$str(redis.password)"
+                        }
+                ],
+                "props" : {
+                }
+        },
+        "cache" : {
+                "class" : "easynode.framework.cache.Redis",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        "$str(redis.host)",
+                        "$int(redis.port)",
+                        {
+                                "masterName" : "$str(redis.masterName)",
+                                "auth_pass" : "$str(redis.password)"
+                        }
+                ],
+                "props" : {
+                }
+        },
+        "sessionStorage" : {
+                "class" : "easynode.framework.server.http.KOACacheSessionStorage",
+                "scope" : "singleton",
+                "props" : {
+                        "cache" : "$cache"
+                }
+        },
+        "datasource" : {
+                "class" : "easynode.framework.db.MysqlDataSource",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        {
+                                "host" : "$str(admin.console.db.host)",
+                                "port" : "$int(admin.console.db.port)",
+                                "user" : "$str(admin.console.db.user)",
+                                "password" : "$str(admin.console.db.password)",
+                                "database" : "$str(admin.console.db.database)",
+                                "minConnections" : "$int(admin.console.db.minConnections)",
+                                "maxConnections" : "$int(admin.console.db.maxConnections)",
+                                "queueLimit" : 0,
+                                "waitForConnections" : true,
+                                "acquireTimeout" : 10000
+                        },"mysql-datasource"
+                ],
+                "props" : {
+                }
+        }
+}

@@ -1,0 +1,30 @@
+{
+        "apps": [
+                {
+                        "name": "CBB100-Connector",
+                        "script": "main.js",
+                        "args": [
+                                "--debug-output=false",
+                                "--tcp.server.port=6001",
+                                "--http.server.port=6002",
+                                "--src-dirs=projects/szzh/src",
+                                "--main-class=szzh.cbb100.CBB100ServerMain",
+                                "--config-files=projects/szzh/etc/cbb100-server/cbb100-server.conf"
+                        ],
+                        "pid_file": "CBB100-Connector.pid",
+                        "instances": 1,
+                        "watch": false,
+                        "node_args": ["--harmony"],
+                        "log_date_format": "",
+                        "log_file": "../logs/CBB100-Connector.log",
+                        "merge_logs": true,
+                        "min_uptime": "30s",
+                        "max_memory_restart": "1G",
+                        "autorestart": true,
+                        "cwd": "../../../bin",
+                        "env": {
+                        },
+                        "next_gen_js": true
+                }
+        ]
+}

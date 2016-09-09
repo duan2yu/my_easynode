@@ -1,0 +1,62 @@
+{
+        "@import" : [
+                "./standalone-controllers.json"
+        ],
+        "httpServer" : {
+                "class" : "easynode.framework.server.http.KOAHttpServer",
+                "scope" : "singleton",
+                "props" : {
+                        "routeMapEntry" : "etc/standalone-route-map.json"
+                }
+        },
+        "bookshelf" : {
+                "class" : "easynode.framework.db.Bookshelf",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        {
+                                "host" : "$str(app.datasource.host)",
+                                "port" : "$int(app.datasource.port)",
+                                "user" : "$str(app.datasource.user)",
+                                "password" : "$str(app.datasource.password)",
+                                "database" : "$str(app.datasource.database)",
+                                "minConnections" : "$int(app.datasource.minConnections)",
+                                "maxConnections" : "$int(app.datasource.maxConnections)"
+                        }
+                ],
+                "props" : {
+                }
+        },
+        "mq" : {
+                "class" : "easynode.framework.mq.RedisListQueue",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        "$str(app.mq.host)",
+                        "$int(app.mq.port)"
+                ],
+                "props" : {
+                }
+        },
+        "cache" : {
+                "class" : "easynode.framework.cache.Redis",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        "$str(app.cache.host)",
+                        "$int(app.cache.port)"
+                ],
+                "props" : {
+                }
+        },
+        "sessionStorage" : {
+                "class" : "easynode.framework.util.ObjectWrapper",
+                "scope" : "singleton",
+                "props" : {
+                        "type" : "storage-memory",
+                        "opts" : {
+
+                        }
+                }
+        }
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+        <meta charset="UTF-8">
+        <title>CBB100相关服务配置和启动说明</title>
+</head>
+<body>
+<center><h1>CBB100相关服务配置和启动说明</h1></center>
+<pre>
+        配置文件：
+        #TCP服务
+        CBB100 TCP Server : szzh/cbb100-server.conf
+        #GPS轨迹数据入库服务
+        CBB100 DataWriter Server : szzh/cbb100-dw.conf
+        CBB100 DataWriter Mongodb ReplicaSet or Cluster : szzh/cbb100-dw-beans.json->"mongodbOpts"，配置方式，请参考mongodb模块文档
+        #LBS数据导入
+        LBSDataImport : szzh/lbs-import.conf
+        #LBS服务
+        LBSService : szzh/lbs-service.conf
+        <hr/>
+        启动方式：
+        cd $CBB100Server
+        [sudo] npm install -g babel
+        npm install
+        cd $CBB100Server/szzh/bin
+        #脚本启动（参考），$name可以是：all(所有应用), cbb100-server(CBB100 Connector), cbb100-dw(CBB100数据入库程序), lbs(基站定位和AGPS), mp(消息推送)
+        sh ./start_cbb100_servers.sh $name
+        #停止脚本（参考）
+        sh ./stop_cbb100_servers.sh $name
+        #导入LBS数据
+        sh ./import-lbs-data.sh
+        <hr/>
+        终端远程控制服务：
+        协议：HTTP
+        Method : GET
+        参数：
+                IMEI：终端设备编号
+                cmd：下发的控制指令 - 2：撤防；（电动车用）3：设防；（电动车用）5：静音；（电动车用）7：免钥匙启动；（电动车用）9：寻车；（电动车用）
+        远程控制响应：
+        {
+                code : 0,               //远程控制响应码, - -1：终端设备不在线或未在此服务上登录；-2：IMEI号错误；-3：控制指令错误；-4：远程控制指令响应超时；-5：指令未下发
+                                                //其他：指令执行完成(0：成功/确认；1：失败；2：消息有误；3：不支持)，这些响应码来自终端设备
+                msg : ''                 //远程控制响应消息
+        }
+        <hr/>
+        LBS服务接口：
+        协议：HTTP
+        Method : GET
+        参数：
+                plmn : 轨迹数据中的plmn字段
+                lac : 轨迹数据中的lac字段
+                cellId : 轨迹数据中的cellId字段
+                agps : 1/0，1表示从u-blox的AGPS辅助平台获取AGPS数据，0表示不取AGPS数据，为1时，响应的data.agps内容为AGPS数据的HEX字符串(可能会为空)
+                查询响应：
+                        {
+                                "code": 1,                                      //0-失败，1-成功
+                                "data": {
+                                        "plmn": 46000,
+                                        "lac": 22985,
+                                        "cellId": 31776,
+                                        "address": "福建省泉州市南安市环西小区溪美街道长兴南安市实验中学东",
+                                        "lat": 24.96062,
+                                        "lng": 118.37526,
+                                        "o_lat": 0,
+                                        "o_lng": 0,
+                                        "precision": 1500
+                                },
+                                "msg": "查询成功"
+                        }
+        接口授权KEY配置见：lbs-service.conf中service.remote.lbs.URL配置项
+        <hr/>
+        设备报警通知调用示例（默认Method为POST）：
+                http://127.0.0.1:6002/alarmNote.json?IMEI=355334050097660&deviceTime=1435902992000&oldAlarmData=%7B%22alarmDoorOpened%22%3A0%2C%22alarmMovement%22%3A0%2C%22alarmQuake%22%3A0%2C%22alarmSpeedy%22%3A0%2C%22alarmPowerOff%22%3A0%7D&newAlarmData=%7B%22alarmDoorOpened%22%3A1%2C%22alarmMovement%22%3A0%2C%22alarmQuake%22%3A0%2C%22alarmSpeedy%22%3A0%2C%22alarmPowerOff%22%3A0%7D
+        设备报警通知参数：
+                IMEI：终端设备IMEI号
+                deviceTime : 终端时间（报警发生时间）
+                oldAlarmData : 原报警状态数据
+                newAlarmData : 新报警数据
+        报警数据使用JSON字符串表示，对象Notation为：
+        var alarmData = {
+                                        alarmDoorOpened : 0,
+                                        alarmMovement : 0,
+                                        alarmQuake : 0,
+                                        alarmSpeedy : 0,
+                                        alarmPowerOff : 0
+                                    };
+        <hr/>
+        报警数据默认写入Collection -> CBB100ALARM
+        轨迹统计数据默认写入Collection -> CBB100TRACKSTAT
+        轨迹统计数据格式：
+        {
+                "IMEI" : "355334050097660",
+                "totalRideTime" : 73,                                   //单位：秒
+                "totalDistance" : 150                                   //单位：百米
+        }
+        <hr/>
+        消息推送接口（透传消息）：
+        协议：HTTP
+        URI : /push
+        Method : POST
+        参数：
+                type : 推送类型，"single" : 单一用户; "multiple" : 多用户(target使用","分隔); 2 : APP所有用户; 3 : 标签用户（标签推送，需要传递"tag"参数）;
+                target : 推送目标用户的别名，type = "multiple"时使用","分隔每个别名
+                tag : 标签，多个标签使用","分隔，type="tag"时必须传
+                expire : 到期时间，格式：YYYY-MM-DD HH24:MI:SS，可不传，默认1小时
+                content : 透传的文本内容
+                alertTitle : 通知栏标题，默认为：'通知-${app.name}'
+                alert : 通知内容，默认为：'您有一条新的应用通知'
+                推送响应：
+                        {
+                                "code": 0,                                                                          //0-成功，-1-参数错误，-2-失败
+                                "pushId": "79610ccc-b650-45e1-a2b1-a953f92805d1", //消息中心的消息ID
+                                "msg": "消息推送成功/消息推送失败"
+                        }
+                ***** 注意：本接口只是将推送消息发送到队列，不代表消息一定能推送成功
+        <hr/>
+        设置用户标签接口：
+        协议：HTTP
+        URI : /tag
+        Method : POST
+        参数：
+                target : 用户别名
+                tag : 应用标签列表，使用","分隔
+                设置标签响应：
+                        {
+                                "code": 0,                                      //0-成功，-1-参数错误，-2-失败
+                                "msg": "Success"                          //设置结果
+                        }
+        <hr/>
+        绑定客户端别名：
+        协议：HTTP
+        URI : /alias
+        Method : POST
+        参数：
+                alias : 用户别名
+                clientId : 个推客户端SDK中获取的ClientID
+                op : 绑定操作类型，"bind/unbind"，默认为"bind"（绑定客户端别名），"unbind"时解绑客户端别名
+                设置标签响应：
+                        {
+                                "code": 0,                                                     //0-成功，-1-参数错误，-2-失败
+                                "msg": "绑定客户端成功"                            //设置结果
+                        }
+        <hr/>
+        日志文件位于：$CBB100Server/logs目录
+</pre>
+</body>
+</html>

@@ -1,0 +1,92 @@
+{
+        "httpServer" : {
+                "class" : "easynode.framework.server.http.KOAHttpServer",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        {
+                                "port" : "$int(motor.console.httpServer.port)",
+                                "enableDefaultWebRoot" : false,
+                                "sessionStorage" : "$sessionStorage"
+                        }
+                ],
+                "props" : {
+                }
+        },
+        "bookshelf" : {
+                "class" : "easynode.framework.db.Bookshelf",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        {
+                                "host" : "$str(motor.console.db.host)",
+                                "port" : "$int(motor.console.db.port)",
+                                "user" : "$str(motor.console.db.user)",
+                                "password" : "$str(motor.console.db.password)",
+                                "database" : "$str(motor.console.db.database)",
+                                "minConnections" : "$int(motor.console.db.minConnections)",
+                                "maxConnections" : "$int(motor.console.db.maxConnections)"
+                        },
+                        "szzh.motor.console.models.*"
+                ],
+                "props" : {
+                }
+        },
+        "mq" : {
+                "class" : "easynode.framework.mq.RedisListQueue",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        "$str(redis.host)",
+                        "$int(redis.port)",
+                        {
+                                "masterName" : "$str(redis.masterName)",
+                                "auth_pass" : "$str(redis.password)"
+                        }
+                ],
+                "props" : {
+                }
+        },
+        "cache" : {
+                "class" : "easynode.framework.cache.Redis",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        "$str(redis.host)",
+                        "$int(redis.port)",
+                        {
+                                "masterName" : "$str(redis.masterName)",
+                                "auth_pass" : "$str(redis.password)"
+                        }
+                ],
+                "props" : {
+                }
+        },
+        "mongodbOpts" : {
+                "class" : "easynode.framework.util.ObjectWrapper",
+                "scope" : "singleton",
+                "props" : {
+                        "opts" : {
+                        }
+                }
+        },
+        "sessionStorage" : {
+                "class" : "easynode.framework.server.http.KOACacheSessionStorage",
+                "scope" : "singleton",
+                "props" : {
+                        "cache" : "$cache"
+                }
+        },
+        "simulatedLoginUser" : {
+                "class" : "easynode.Notation",
+                "scope" : "singleton",
+                "props" : {
+                        "id" : 1,
+                        "name" : "admin",
+                        "realName" : "系统管理员",
+                        "vendorId" : 1,
+                        "vendorName" : "比德文",
+                        "privileges" : []
+                }
+        }
+}

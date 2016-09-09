@@ -1,0 +1,154 @@
+{
+        "apps": [
+                {
+                        "name": "CBB100H-Connector",
+                        "script": "main.js",
+                        "args": [
+                                "--debug-output=true",
+                                "--tcp.server.port=6001",
+                                "--http.server.port=6002",
+                                "--src-dirs=projects/szzh/src",
+                                "--main-class=szzh.cbb100.CBB100ServerMain",
+                                "--config-files=projects/szzh/etc/cbb100-server/cbb100-server.conf"
+                        ],
+                        "pid_file": "CBB100H-Connector.pid",
+                        "instances": 1,
+                        "watch": false,
+                        "node_args": "--harmony",
+                        "log_date_format": "",
+                        "log_file": "../logs/CBB100H-Connector.log",
+                        "merge_logs": true,
+                        "min_uptime": "30s",
+                        "max_memory_restart": "1G",
+                        "autorestart": true,
+                        "cwd": "../../../bin",
+                        "env": {
+                        },
+                        "next_gen_js": true
+                },
+                {
+                        "name": "CBB100H-DataWriter",
+                        "script": "main.js",
+                        "args": [
+                                "--debug-output=true",
+                                "--src-dirs=projects/szzh/src",
+                                "--main-class=szzh.cbb100.CBB100DWMain",
+                                "--config-files=projects/szzh/etc/cbb100-dw/cbb100-dw.conf"
+                        ],
+                        "pid_file": "CBB100H-DataWriter.pid",
+                        "instances": 1,
+                        "watch": false,
+                        "node_args": "--harmony",
+                        "log_date_format": "",
+                        "log_file": "../logs/CBB100H-DataWriter.log",
+                        "merge_logs": true,
+                        "min_uptime": "30s",
+                        "max_memory_restart": "1G",
+                        "autorestart": true,
+                        "cwd": "../../../bin",
+                        "env": {
+                        },
+                        "next_gen_js": true
+                },
+                {
+                        "name": "LBS",
+                        "script": "main.js",
+                        "args": [
+                                "--debug-output=true",
+                                "--http.server.port=7000",
+                                "--src-dirs=projects/szzh/src",
+                                "--main-class=szzh.cbb100.LBSServiceMain",
+                                "--config-files=projects/szzh/etc/lbs/lbs-service.conf"
+                        ],
+                        "pid_file": "LBS.pid",
+                        "instances": 1,
+                        "watch": false,
+                        "node_args": "--harmony",
+                        "log_date_format": "",
+                        "log_file": "../logs/LBSService.log",
+                        "merge_logs": true,
+                        "min_uptime": "30s",
+                        "max_memory_restart": "1G",
+                        "autorestart": true,
+                        "cwd": "../../../bin",
+                        "env": {
+                        },
+                        "next_gen_js": true
+                },
+                {
+                        "name": "MessagePush",
+                        "script": "main.js",
+                        "args": [
+                                "--debug-output=true",
+                                "--http.port=5000",
+                                "--src-dirs=projects/szzh/src",
+                                "--main-class=szzh.mp.MessagePushMain",
+                                "--config-files=projects/szzh/etc/mp/message-push.conf"
+                        ],
+                        "pid_file": "MessagePush.pid",
+                        "instances": 1,
+                        "watch": false,
+                        "node_args": "--harmony",
+                        "log_date_format": "",
+                        "log_file": "../logs/MessagePush.log",
+                        "merge_logs": true,
+                        "min_uptime": "30s",
+                        "max_memory_restart": "1G",
+                        "autorestart": true,
+                        "cwd": "../../../bin",
+                        "env": {
+                        },
+                        "next_gen_js": true
+                },
+                {
+                        "name": "MessagePushTemp",
+                        "script": "main.js",
+                        "args": [
+                                "--debug-output=true",
+                                "--http.port=5001",
+                                "--src-dirs=projects/szzh/src",
+                                "--main-class=szzh.mp.MessagePushMain",
+                                "--config-files=projects/szzh/etc/mp/message-push-dev.conf"
+                        ],
+                        "pid_file": "MessagePushTemp.pid",
+                        "instances": 1,
+                        "watch": false,
+                        "node_args": "--harmony",
+                        "log_date_format": "",
+                        "log_file": "../logs/MessagePushTemp.log",
+                        "merge_logs": true,
+                        "min_uptime": "30s",
+                        "max_memory_restart": "1G",
+                        "autorestart": true,
+                        "cwd": "../../../bin",
+                        "env": {
+                        },
+                        "next_gen_js": true
+                },
+                {
+                        "name": "MotorConsole",
+                        "script": "main.js",
+                        "args": [
+                                "--debug-output=true",
+                                "--motor.console.httpServer.port=8001",
+                                "--src-dirs=projects/szzh-motor-console/src",
+                                "--main-class=szzh.motor.console.MotorConsoleMain",
+                                "--config-files=projects/szzh-motor-console/etc/motor-console-dev.conf"
+                        ],
+                        "pid_file": "MotorConsole.pid",
+                        "instances": 1,
+                        "watch": false,
+                        "node_args": "--harmony",
+                        "log_date_format": "",
+                        "log_file": "../logs/MotorConsole.log",
+                        "merge_logs": true,
+                        "min_uptime": "30s",
+                        "max_memory_restart": "1G",
+                        "autorestart": true,
+                        "cwd": "../../../bin",
+                        "env": {
+                        },
+                        "next_gen_js": true
+                }
+        ]
+}

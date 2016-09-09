@@ -1,0 +1,71 @@
+.checkbox-inline {
+    position: relative ;
+}
+
+.j-student-selector {
+    max-height: 150px;
+    min-height: 32px;
+    height: auto;
+    overflow: scroll;
+}
+
+.error-message,
+.success-message {
+    position: fixed;
+    top: 0;
+    z-index: 10000;
+    width: 100%;
+    left: 0;
+}
+
+.form-control {
+    border-radius: 4px !important;
+}
+
+.parsley-errors-list {
+    color: #f00;
+}
+span.parsley-error {
+    display: block;
+    color: red;
+    margin-top: 5px;
+	font-size:12px;
+	font-family:"Î¢ÈíÑÅºÚ","Microsoft Yahei";
+}
+
+/*公告页面*/
+.z-board-imgList{overflow: hidden;}
+.z-board-imgList img{width:150px;height:150px;display:block;}
+.z-board-imgList .img_list{width:150px;height:150px;float:left;display:block;margin:5px;position:relative;}
+.z-board-imgList .img_list label{width:20px;height:20px;background: #cecece;display:none;
+    position: absolute;right:0px;top:0px;border-radius: 55px;text-align: center;line-height: 20px;cursor: pointer;
+}
+.z-board-file{overflow: hidden;}
+.z-board-file span{display: none;}
+.z-board-file input{float: left;display: none;}
+
+.z-to{float:left;line-height:32px;}
+
+.stroe_table th{text-align: right;}
+
+.h-type span{display: none;}
+
+.mapVedio .cont{height:90px;background:#fff;position:absolute;bottom:0px;left:0px;width:100%;z-index:1000;}
+.mapVedio .list{width:33.3%;height:90px;float:left;}
+.mapVedio .circle{width:32px;height:32px;border:1px solid #dcdcdc;border-radius:100px;font-size:12px;line-height:32px;text-align:center;display:block;margin:5px auto 25px auto;}
+.mapVedio .list .on{background:#d21177;color:#fff;border:1px solid #d21177;text-shadow: 0 0px 0 ;}
+.mapVedio .word{text-align:center;}
+.mapVedio .rangeMap{top:42px;left:0px;width:100%;height:22px;}
+.mapVedio .line{margin:9px 15px 0px;-webkit-box-flex: 1;box-flex: 1;height:3px;background:#e0e0e0;border-top:1px solid #a5a5a5;}
+.mapVedio .line_ok{position:absolute;left:0px;top:-1px;background:#9ccce2;border-top:1px solid #7396a7;height:3px;}
+.mapVedio .btn{width:23px;height:22px;background:url(../images/vedio.png);display:block;background-size:cover;margin-right:10px;}
+.mapVedio .day{left:10px;top:30px;padding-bottom:5px;background:#d21177;border-radius:4px;color:#fff;width:32px;height:32px;line-height:12px;padding-top:5px;}
+.mapVedio .day label{font-size:20px;text-shadow: 0 0px 0 ;}
+.mapVedio .day i{font-size:12px;text-shadow: 0 0px 0 ;}
+.mapVedio .dayChoose{width:132px;height:132px;left:0px;top:0px;border:0px; background:none;z-index:1000000;}
+
+.mapVedio .btn_on{background-image:url(../images/vedio_stop.png);}
+.webkitbox{display: -webkit-box;-webkit-box-orient: horizontal;}
+#container{height:100%}
+.pl{position:relative;}
+.pa{position:absolute;}

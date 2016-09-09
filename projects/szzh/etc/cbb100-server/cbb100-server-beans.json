@@ -1,0 +1,64 @@
+{
+        "redisQueue": {
+                "class": "easynode.framework.mq.RedisListQueue",
+                "scope": "singleton",
+                "init": "initialize",
+                "init-args": [
+                        "$str(redis.host)",
+                        "$int(redis.port)",
+                        {
+                                "masterName": "$str(redis.masterName)",
+                                "auth_pass": "$str(redis.password)"
+                        }
+                ],
+                "props": {
+                }
+        },
+        "cache": {
+                "class": "easynode.framework.cache.Redis",
+                "scope": "singleton",
+                "init": "initialize",
+                "init-args": [
+                        "$str(redis.host)",
+                        "$int(redis.port)",
+                        {
+                                "masterName": "$str(redis.masterName)",
+                                "auth_pass": "$str(redis.password)"
+                        }
+                ],
+                "props": {
+                }
+        },
+        "bookshelf" : {
+                "class" : "easynode.framework.db.Bookshelf",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        {
+                                "host" : "$str(cbb100.server.db.host)",
+                                "port" : "$int(cbb100.server.db.port)",
+                                "user" : "$str(cbb100.server.db.user)",
+                                "password" : "$str(cbb100.server.db.password)",
+                                "database" : "$str(cbb100.server.db.database)",
+                                "minConnections" : "$int(cbb100.server.db.minConnections)",
+                                "maxConnections" : "$int(cbb100.server.db.maxConnections)"
+                        }
+                ],
+                "props" : {
+                }
+        },
+        "controller": {
+                "class": "szzh.cbb100.controller.CBB100Controller",
+                "scope": "singleton",
+                "props": {
+                        "cache": "$cache",
+                        "bookshelf" : "$bookshelf"
+                }
+        },
+        "intranetFilter" : {
+                "class" : "szzh.cbb100.controller.filter.IntranetFilter",
+                "scope" : "singleton",
+                "props" : {
+                }
+        }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>续费记录</title>
+    <link rel="stylesheet" href="../bootstrap-3.3.4/css/bootstrap.min.css">
+    <script src="../js/lib/jquery-1.11.3.min.js"></script>
+    <script src="../js/lib/angular-1.3.16.min.js"></script>
+    <script src="../bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script src="../bootstrap-3.3.4/js/bootstrap-paginator.js"></script>
+    <script src="../js/src/easynode-ployfill.js"></script>
+    <script src="js/ccms-recharge-record.js"></script>
+
+</head>
+<body ng-app="app">
+<!--# include file="inc/nav.html" -->
+<div class="container">
+
+    <div class="tab-content" ng-controller="recordList">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <table id="List" class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="">数据卡号</th>
+                    <th class="">续费日期</th>
+                    <th class="">到期时间</th>
+                    <!--<th class="">备注</th>-->
+                    <th class="">操作</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="list in List">
+                    <td>{{list.simNumber}}</td>
+                    <td>{{DateTostring(list.rechargeTime) }}</td>
+                    <td>{{DateTostring(list.expiryDate)}}</td>
+                    <!--<td>三个月</td>-->
+                    <td>
+                        <div class="btn-group" role="group" aria-label="...">
+                            <a class="btn btn-default" ng-click="deleteRecord(list.rechargeid)"><span class="glyphicon glyphicon-remove"
+                                                             aria-hidden="true"></span>删除</a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+
+            </table>
+            <div id="page1" class="text-right">
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

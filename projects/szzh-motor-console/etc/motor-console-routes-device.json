@@ -1,0 +1,209 @@
+[
+        {
+                "comment" : "设备库存查询",
+                "id": "QUERY_DEVICE_INVENTORY",
+                "uri": "/api/device/queryInventory",
+                "http-method": "get",
+                "controller": "$deviceController",
+                "handler": "queryInventory",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "已装配设备查询",
+                "id": "QUERY_INSTALLED_DEVICE",
+                "uri": "/api/device/queryInstalled",
+                "http-method": "get",
+                "controller": "$deviceController",
+                "handler": "queryInstalled",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "未装配设备查询",
+                "id": "QUERY_UNINSTALLED_DEVICE",
+                "uri": "/api/device/queryUninstalled",
+                "http-method": "get",
+                "controller": "$deviceController",
+                "handler": "queryUninstalled",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "单一设备入库",
+                "id": "SINGLE_INVENTORY_IN",
+                "uri": "/api/device/inventoryIn/single",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "singleInventoryIn",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "设备批量入库",
+                "id": "BATCH_INVENTORY_IN",
+                "uri": "/api/device/inventoryIn/batch",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "batchInventoryIn",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "设备批量出库",
+                "id": "BATCH_INVENTORY_OUT",
+                "uri": "/api/device/inventoryOut/batch",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "batchInventoryOut",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "设备出入库记录查询",
+                "id": "QUERY_INVENTORY_LOG",
+                "uri": "/api/device/inventoryLog",
+                "http-method": "get",
+                "controller": "$deviceController",
+                "handler": "queryInventoryLog",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "获取设备入库记录详情",
+                "id": "READ_INVENTORY_LOG",
+                "uri": "/api/device/inventoryLog/:id",
+                "http-method": "get",
+                "controller": "$deviceController",
+                "handler": "readInventoryLog",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "下载设备出入库时导入的文件(依据设备出入库记录ID)",
+                "id": "DOWNLOAD_INVENTORY_UPLOAD_FILE",
+                "uri": "/api/device/inventoryDownload/:id",
+                "http-method": "get",
+                "controller": "$deviceController",
+                "handler": "downloadInventoryUploadFile",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "设备装备",
+                "id": "INSTALL_DEVICE",
+                "uri": "/api/device/install",
+                "http-method": "post",
+                "controller": "$deviceController",
+                "handler": "installDevices",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "查询设备详情",
+                "id": "READ_DEVICE_INFO",
+                "uri": "/api/device/info/:imei",
+                "http-method": "get",
+                "controller": "$deviceController",
+                "handler": "readDeviceInfo",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "删除设备",
+                "id": "DELETE_DEVICE",
+                "uri": "/api/device/delete/:imei",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "deleteDevice",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "更新设备信息",
+                "id": "UPDATE_DEVICE_INFO",
+                "uri": "/api/device/update/:imei",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "updateDeviceInfo",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment": "查询设备列表",
+                "id": "listDevice",
+                "uri": "/api/device/list",
+                "http-method": "get",
+                "controller": "$deviceController",
+                "handler": "list",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "查询设备消息记录",
+                "id": "queryMsgLog",
+                "uri": "/api/device/msgLog/:imei",
+                "http-method": "get",
+                "controller": "$deviceController",
+                "handler": "queryMsgLog",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "设备实时数据查询",
+                "id": "queryDeviceSnapshot",
+                "uri": "/api/device/snapshot/:imei",
+                "http-method": "get",
+                "controller": "$deviceController",
+                "handler": "snapshot",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "设备轨迹数据查询",
+                "id": "queryDeviceTrack",
+                "uri": "/api/device/track/:imei",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "track",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "设备报警数据查询",
+                "id": "queryDeviceAlarm",
+                "uri": "/api/device/alarm",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "alarm",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "设备配置查询",
+                "id": "readDeviceConfig",
+                "uri": "/api/device/config/read/:deviceId",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "readConfig",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "设备配置变更",
+                "id": "updateDeviceConfig",
+                "uri": "/api/device/config/update/:deviceId",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "updateConfig",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "新增设备(单个)",
+                "id": "createDevice",
+                "uri": "/api/device/create",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "create",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "查询设备类型列表清单",
+                "id": "queryDeviceTypes",
+                "uri": "/api/device/deviceTypes",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "queryDeviceTypes",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "下发控制指令",
+                "id": "deviceControl",
+                "uri": "/api/device/control/:imei",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "control",
+                "filters": ["$privilegeFilter"]
+        }
+]

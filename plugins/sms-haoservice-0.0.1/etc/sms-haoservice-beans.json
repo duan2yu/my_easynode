@@ -1,0 +1,8 @@
+{
+        "smsHaoServiceController" : {
+                "class" : "plugin:sms-haoservice@0.0.1@cn.beneverse.easynode.plugin.sms.haoservice.WebController",
+                "scope" : "singleton",
+                "props" : {
+                }
+        }
+}

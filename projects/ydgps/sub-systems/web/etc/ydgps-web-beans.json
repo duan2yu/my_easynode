@@ -1,0 +1,6 @@
+{
+        "@import": [
+                "./ydgps-web-beans-basic.json",
+                "./ydgps-web-beans-controllers.json"
+        ]
+}

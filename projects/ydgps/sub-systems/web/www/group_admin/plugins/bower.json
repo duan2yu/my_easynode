@@ -1,0 +1,19 @@
+{
+  "name": "scard",
+  "version": "0.0.0",
+  "authors": [
+    "chenjg"
+  ],
+  "description": "家校通",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,60 @@
+.modal_count .btn{margin:10px 60px;}
+.right-side{overflow:hidden;}
+
+.car_list_online label{margin-left:10px;}
+.car_list_online .red{color: red;}
+.car_list_online .blue{color:blue;}
+.car_list_online .off{color:#d4d4d4;}
+
+.car-group-btn{text-align:center;}
+
+.car-recharge .control-label-left{margin-top:7px;}
+
+.car-recharge-pay .col-lg-3{margin:10px;border:1px solid #dedede;padding:4px 10px;}
+.car-recharge-pay .col-lg-3 label{width:100%;}
+
+.sys-crawl #container{height:300px;}
+.sys-crawl .form-group .box-header label{font-size:14px;font-weight: normal;}
+.sys-crawl .collapse label{display: block;}
+
+
+.mapVedio .cont{height:90px;background:#fff;position:absolute;bottom:0px;left:0px;width:100%;z-index:1000;}
+.mapVedio .list{width:33.3%;height:90px;float:left;}
+.mapVedio .circle{width:32px;height:32px;border:1px solid #dcdcdc;border-radius:100px;font-size:12px;line-height:32px;text-align:center;display:block;margin:5px auto 25px auto;}
+.mapVedio .list .on{background:#d21177;color:#fff;border:1px solid #d21177;text-shadow: 0 0px 0 ;}
+.mapVedio .word{text-align:center;}
+.mapVedio .rangeMap{top:42px;left:0px;width:100%;height:22px;}
+.mapVedio .line{margin:9px 15px 0px;-webkit-box-flex: 1;box-flex: 1;height:3px;background:#e0e0e0;border-top:1px solid #a5a5a5;}
+.mapVedio .line_ok{position:absolute;left:0px;top:-1px;background:#9ccce2;border-top:1px solid #7396a7;height:3px;}
+.mapVedio .btn{width:23px;height:22px;background:url(../images/vedio.png);display:block;background-size:cover;margin-right:10px;}
+.mapVedio .day{left:10px;top:30px;padding-bottom:5px;background:#d21177;border-radius:4px;color:#fff;width:32px;height:32px;line-height:12px;padding-top:5px;}
+.mapVedio .day label{font-size:20px;text-shadow: 0 0px 0 ;}
+.mapVedio .day i{font-size:12px;text-shadow: 0 0px 0 ;}
+.mapVedio .dayChoose{width:132px;height:132px;left:0px;top:0px;border:0px; background:none;z-index:1000000;}
+
+.mapVedio .btn_on{background-image:url(../images/vedio_stop.png);}
+.webkitbox{display: -webkit-box;-webkit-box-orient: horizontal;}
+#container{height:100%}
+.pl{position:relative;}
+.pa{position:absolute;}
+
+
+
+.pageStatus,
+.pageJump {float:right;margin:0px 5px;}
+.pageJump input{width:40px;border:1px solid #ddd;line-height:25px;display:block;float: left;margin-right:5px;}
+.pageJump label{padding: 5px 10px;font-weight: normal;font-size:12px;border:1px solid #ddd;line-height:17px;display:block;float: left;}
+
+#deviceList label{display: block;}
+.fa-spin:before{font-size:25px;margin: auto;}
+
+.alert-dismissible{ position: fixed;
+    top: 0;
+    z-index: 10000;
+    width: 100%;
+    left: 0;}
+
+    .well label{display:block;}
+
+
+.setG2 input.form-control{width:70px;display: inline-block;}

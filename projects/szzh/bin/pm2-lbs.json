@@ -1,0 +1,29 @@
+{
+        "apps": [
+                {
+                        "name": "LBS",
+                        "script": "main.js",
+                        "args": [
+                                "--debug-output=false",
+                                "--src-dirs=projects/szzh/src",
+                                "--main-class=szzh.cbb100.LBSServiceMain",
+                                "--config-files=projects/szzh/etc/lbs/lbs-service.conf",
+                                "--http.server.port=7000"
+                        ],
+                        "pid_file": "LBS.pid",
+                        "instances": 1,
+                        "watch": false,
+                        "node_args": "--harmony",
+                        "log_date_format": "",
+                        "log_file": "../logs/LBS.log",
+                        "merge_logs": true,
+                        "min_uptime": "30s",
+                        "max_memory_restart": "1G",
+                        "autorestart": true,
+                        "cwd": "../../../bin",
+                        "env": {
+                        },
+                        "next_gen_js": true
+                }
+        ]
+}

@@ -1,0 +1,102 @@
+{
+        "motorConsoleUtil" : {
+                "class" : "szzh.ydgps.web.util.MotorConsoleUtil",
+                "scope" : "singleton"
+        },
+
+        "privilegeFilter" : {
+                "class" : "szzh.ydgps.web.controller.filter.PrivilegeFilter",
+                "scope" : "singleton"
+        },
+        "simulateFilter" : {
+                "class" : "szzh.ydgps.web.controller.filter.SimulateFilter",
+                "scope" : "singleton"
+        },
+
+        "deviceController" : {
+                "class" : "szzh.ydgps.web.controller.DeviceController",
+                "scope" : "singleton",
+                "props" : {
+                        "bookshelf" : "$bookshelf",
+                        "util" : "$motorConsoleUtil",
+                        "cache" : "$cache"
+                }
+        },
+
+        "deviceGroupController" : {
+                "class" : "szzh.ydgps.web.controller.DeviceGroupController",
+                "scope" : "singleton",
+                "props" : {
+                        "bookshelf" : "$bookshelf",
+                        "util" : "$motorConsoleUtil"
+                }
+        },
+
+        "userController" : {
+                "class" : "szzh.ydgps.web.controller.UserController",
+                "scope" : "singleton",
+                "props" : {
+                        "bookshelf" : "$bookshelf",
+                        "util" : "$motorConsoleUtil"
+                }
+        },
+        "userSessionController" : {
+                "class" : "szzh.ydgps.web.controller.UserSessionController",
+                "scope" : "singleton",
+                "props" : {
+                        "bookshelf" : "$bookshelf",
+                        "util" : "$motorConsoleUtil",
+                        "rbacPlugin":"$rbacPlugin"
+                }
+        },
+
+        "groupController" : {
+                "class" : "szzh.ydgps.web.controller.GroupController",
+                "scope" : "singleton",
+                "props" : {
+                        "bookshelf" : "$bookshelf",
+                        "util" : "$motorConsoleUtil"
+                }
+        },
+
+        "electronicFenceController" : {
+                "class" : "szzh.ydgps.web.controller.ElectronicFenceController",
+                "scope" : "singleton",
+                "props" : {
+                        "bookshelf" : "$bookshelf",
+                        "util" : "$motorConsoleUtil",
+                        "cache" : "$cache"
+                }
+        },
+
+        "chargeController" : {
+                "class" : "szzh.ydgps.web.controller.ServiceChargeController",
+                "scope" : "singleton",
+                "props" : {
+                        "bookshelf" : "$bookshelf",
+                        "util" : "$motorConsoleUtil",
+                        "cache" : "$cache"
+                }
+        },
+
+        "roleController" : {
+                "class" : "szzh.ydgps.web.controller.RoleController",
+                "scope" : "singleton",
+                "props" : {
+                        "bookshelf" : "$bookshelf",
+                        "util" : "$motorConsoleUtil",
+                        "rbacPlugin":"$rbacPlugin"
+                }
+        },
+
+        "privilegeController" : {
+                "class" : "szzh.ydgps.web.controller.PrivilegeController",
+                "scope" : "singleton",
+                "props" : {
+                        "bookshelf" : "$bookshelf",
+                        "util" : "$motorConsoleUtil",
+                        "rbacPlugin":"$rbacPlugin"
+                }
+        }
+
+}

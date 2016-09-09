@@ -1,0 +1,56 @@
+[
+        {
+                "comment": "在线设备列表",
+                "id": "onlineDevices",
+                "uri": "/onlineDevices",
+                "http-method": "get",
+                "controller": "$controller",
+                "handler": "onlineDevices",
+                "filters": []
+        },
+        {
+                "comment": "远程控制",
+                "id": "remoteControl",
+                "uri": "/remoteControl",
+                "http-method": "get/post",
+                "controller": "$controller",
+                "handler": "remoteControl",
+                "filters": ["$intranetFilter"]
+        },
+        {
+                "comment": "同步配置",
+                "id": "config",
+                "uri": "/config",
+                "http-method": "get/post",
+                "controller": "$controller",
+                "handler": "config",
+                "filters": ["$intranetFilter"]
+        },
+        {
+                "comment": "设备登录",
+                "id": "deviceLogin",
+                "uri": "/deviceLogin",
+                "http-method": "get/post",
+                "controller": "$controller",
+                "handler": "deviceLogin",
+                "filters": ["$intranetFilter"]
+        },
+        {
+                "comment": "设备状态查询",
+                "id": "deviceState",
+                "uri": "/deviceState",
+                "http-method": "get/post",
+                "controller": "$controller",
+                "handler": "deviceState",
+                "filters": []
+        },
+        {
+                "comment": "设备电子围栏查询",
+                "id": "deviceFence",
+                "uri": "/queryDeviceFence",
+                "http-method": "get/post",
+                "controller": "$controller",
+                "handler": "deviceFence",
+                "filters": []
+        }
+]

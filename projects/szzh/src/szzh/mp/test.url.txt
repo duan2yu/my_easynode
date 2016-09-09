@@ -1,0 +1,18 @@
+#Step-1 绑定用户别名
+http://localhost:5000/alias?alias=zlbbq&clientId=2f906b7e4e234ae82bf0171a95f8d605
+http://localhost:5000/alias?alias=zlbbq&clientId=6f93f9ed6cfe3b210cf602880418b39c
+
+#Step-2-1 单个用户推送
+http://localhost:5000/push?type=single&target=zlbbq&content=123456&badge=1
+
+#Step-2-2 多个用户推送
+http://localhost:5000/push?type=multiple&target=zlbbq&content=12345678
+
+#Step-3 全APP推送
+http://localhost:5000/push?type=app&content=123456
+
+#Step-4 标签推送
+http://localhost:5000/push?type=tag&content=123456&tag=szzh
+
+#Step-5 设置用户标签
+http://localhost:5000/tag?target=zlbbq&tag=szzh,cbb100

@@ -1,0 +1,51 @@
+{
+        "motorConsoleUtil" : {
+                "class" : "szzh.motor.console.util.MotorConsoleUtil",
+                "scope" : "singleton"
+        },
+        "privilegeFilter" : {
+                "class" : "szzh.motor.console.controllers.filters.PrivilegeFilter",
+                "scope" : "singleton"
+        },
+        "userSessionController" : {
+                "class" : "szzh.motor.console.controllers.UserSessionController",
+                "scope" : "singleton",
+                "props" : {
+                        "bookshelf" : "$bookshelf",
+                        "util" : "$motorConsoleUtil"
+                }
+        },
+        "userController" : {
+                "class" : "szzh.motor.console.controllers.UserController",
+                "scope" : "singleton",
+                "props" : {
+                        "bookshelf" : "$bookshelf",
+                        "util" : "$motorConsoleUtil"
+                }
+        },
+        "vendorController" : {
+                "class" : "szzh.motor.console.controllers.VendorController",
+                "scope" : "singleton",
+                "props" : {
+                        "bookshelf" : "$bookshelf",
+                        "util" : "$motorConsoleUtil"
+                }
+        },
+        "deviceController" : {
+                "class" : "szzh.motor.console.controllers.DeviceController",
+                "scope" : "singleton",
+                "props" : {
+                        "bookshelf" : "$bookshelf",
+                        "util" : "$motorConsoleUtil",
+                        "cache" : "$cache"
+                }
+        },
+        "groupController" : {
+                "class" : "szzh.motor.console.controllers.GroupController",
+                "scope" : "singleton",
+                "props" : {
+                        "bookshelf" : "$bookshelf",
+                        "util" : "$motorConsoleUtil"
+                }
+        }
+}

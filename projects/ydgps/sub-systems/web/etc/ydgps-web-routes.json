@@ -1,0 +1,8 @@
+[
+        "@import(./ydgps-web-routes-views-admin.json)",
+        "@import(./ydgps-web-routes-api.json)",
+        "@import(./ydgps-web-routes-role.json)",
+        "@import(./ydgps-web-routes-privilege.json)",
+        "@import(./ydgps-web-routes-api-electronic-fence.json)",
+        "@import(./ydgps-web-routes-charge.json)"
+]

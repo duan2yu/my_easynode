@@ -1,0 +1,11 @@
+[
+        {
+                "comment": "查询权限列表",
+                "id": "listPrivileges",
+                "uri": "/api/privilege/list",
+                "http-method": "get/post",
+                "controller": "$privilegeController",
+                "handler": "list",
+                "filters": ["$privilegeFilter"]
+        }
+]

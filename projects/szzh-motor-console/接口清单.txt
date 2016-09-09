@@ -1,0 +1,172 @@
+接口返回JSON格式：
+{
+	"code" : 0,             //0:　接口调用成功，-1: 接口调用失败，其他常见错误参数错误码表
+	"result" : {}            //响应内容，code === 0时有效
+	"msg" : "错误消息"
+}
+
+通用错误码表：
+easynode.framework.mvc.ActionResult.errors.0 = 接口调用成功
+easynode.framework.mvc.ActionResult.errors.-1 = 接口调用失败
+easynode.framework.mvc.ActionResult.errors.-2 = 接口未找到
+easynode.framework.mvc.ActionResult.errors.-3 = Action没有返回值
+easynode.framework.mvc.ActionResult.errors.-4 = Action功能未实现
+easynode.framework.mvc.ActionResult.errors.-5 = Action调用失败，校验失败
+easynode.framework.mvc.ActionResult.errors.-6 = Action调用失败，没有权限
+easynode.framework.mvc.ActionResult.errors.-7 = 请登录
+
+传入的时间格式为：YYYY-MM-DD HH24:MI:SS
+
+
+用户登录接口(get/post)
+/api/user/login?userId=$用户名&userPwd=$用户密码
+
+用户登出接口(get)
+/api/user/logout
+
+获取当前登录用户接口(get)
+/api/user/getLoginUser
+
+创建新用户(get/post)
+/api/user/create
+字段列表：
+name - 用户名(登录名)
+vendorId - 厂商编号
+realName - 真实姓名
+phoneNumber - 电话号码
+password - 密码(前端验证两次密码的一致性)
+privileges - 用户权限列表
+
+
+权限列表：
+
+
+
+更新用户资料(get/post)
+/api/user/update/$用户ID?realName=$真实姓名&phoneNumber=$手机号码(default:null)&password=$密码(default:null,不更新密码)
+
+查询用户列表(get)
+/api/user/list?page=$页号(default:1)&rpp=$每页行数(default:20)&vendorId=$厂商编号&realName=$用户姓名(like)&type=$用户类型(enum[0:展华用户:default,1:其他厂商用户])
+
+查询用户详细资料(get)
+/api/user/info/$用户ID
+
+查询用户可见厂商(get) -- 下接列表框使用
+/api/user/visibleVendors
+
+查询厂商列表(get)
+/api/vendor/list
+
+删除厂商(get)
+/api/vendor/delete/$厂商ID
+
+新增厂商(get/post)
+/api/vendor/create
+字段列表：
+name - 厂商名
+linkman - 联系人
+phoneNumber - 联系电话
+email - 邮箱地址
+website - 主页地址
+appId - APP ID
+appSecret - APP Secret
+address - 厂商地址
+status - 状态(0:有效，1:无效)，默认0
+
+更新厂商资料(get/post)
+/api/vendor/update/$厂商ID
+
+查询厂商详细资料(get)
+/api/vendor/info/$厂商ID
+
+查询库存(get)
+#精确查询
+/api/device/queryInventory?IMEI=$IMEI
+#高级查询
+/api/device/queryInventory?deviceType=$设备型号&operatorRealName=$入库操作者姓名&batch=$入库批次号&inventoryInTimeBegin=$入库时间起(时间格式)&inventoryInTimeEnd=$入库时间止(时间格式)
+
+已装配设备查询(get)
+#精确查询
+/api/device/queryInstalled?IMEI=$IMEI&masterMobile=$车主手机号码
+#高级查询
+/api/device/queryInstalled?batch=$生产批次&vendorId=$厂商ID&bind=$绑定状态(enum[0:未绑定,1:已绑定])
+
+查询未装配设备(get)
+#精确查询
+/api/device/queryUninstalled?IMEI=$IMEI
+#高级查询
+/api/device/queryUninstalled?batch=$生产批次&vendorId=$厂商ID&inventory&inventoryOutTimeBegin=$出库时间起(时间格式)&inventoryOutTimeEnd=$出库时间止(时间格式)
+
+单台入库(get/post)
+/api/device/inventoryIn/single?IMEI=$IMEI&deviceType=$设备型号[&batch=批次号][&regCode=$注册码][&comment=$备注][&reason=$调拨原因]
+
+批量入库(post->multipart/form-data)
+/api/device/inventoryIn/batch?deviceType=$设备类型&importFile=$文件(file upload)
+
+批量出库(post->multipart/form-data)
+/api/device/inventoryIn/batch?deviceType=$设备类型&vendorId=$厂商ID&reason=$原因&comment=$comment&importFile=$文件(file upload)
+
+查询出库/入库记录(get)
+/api/device/inventoryLog?type=$出库/入库(0:入库;1:出库)&vendorId=$厂商ID(出库时有效)&beginTime=$出入库时间起(时间格式)&endTime=$出入库时间止(时间格式)&operatorRealName=$操作者姓名
+
+查询出库/入库详情(get)
+/api/device/inventoryLog/$入库出库日志ID
+
+下载出入/入库时上传的文件(get)
+/api/device/inventoryDownload/$入库出库日志ID
+
+设备装配(post)
+/api/device/install?vendorId=$厂商ID&importFile=$文件(file upload)
+
+查询设备详细信息(get)
+/api/device/info/$IMEI
+
+删除设备(get/post)
+/api/device/delete/$IMEI
+
+更新设备信息(get/post)
+/api/device/update/$IMEI?imsi=$IMEI&phone=$SIM卡号......
+所有可更新的设备如下建表语句：
+CREATE TABLE `motor_device` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '设备ID',
+  `imsi` varchar(20) NOT NULL COMMENT '国际移动用户识别码',
+  `imei` varchar(20) NOT NULL COMMENT '国际移动设备识别码',
+  `phone` varchar(15) DEFAULT NULL COMMENT '终端SIM手机号码',
+  `regCode` varchar(6) NOT NULL COMMENT '6位纯数字字符的随机数，供服务器端IMEI和这个值联合合法性公众号绑设备时的验证',
+  `deviceName` varchar(20) DEFAULT NULL COMMENT '设备名称',
+  `deviceType` varchar(50) DEFAULT 'ch100' COMMENT '设备类型',
+  `motorBrand` varchar(20) DEFAULT NULL COMMENT '车辆品牌',
+  `motorModel` varchar(20) DEFAULT NULL COMMENT '车辆型号',
+  `motorColor` varchar(10) DEFAULT NULL COMMENT '车辆颜色',
+  `motorCode` varchar(10) DEFAULT NULL COMMENT '整车编码',
+  `motorEnginCode` varchar(20) DEFAULT NULL COMMENT '电机号码',
+  `motorBornTime` bigint(20) DEFAULT '0' COMMENT '出厂日期',
+  `motorNumber` varchar(10) DEFAULT NULL COMMENT '车牌号码',
+  `modalId` varchar(40) NOT NULL COMMENT '车台型号id',
+  `appVersion` varchar(12) DEFAULT NULL COMMENT '设备应用软件版本',
+  `protocolVersion` varchar(12) DEFAULT NULL COMMENT '设备应用使用协议版本',
+  `firmwareVersion` varchar(12) DEFAULT NULL COMMENT '设备固件版本号',
+  `activate` tinyint(2) unsigned zerofill DEFAULT '00' COMMENT '设备激活状态（产生流量就算激活），0.未激活 1.已激活',
+  `bind` tinyint(2) DEFAULT '0' COMMENT '设备绑定状态（是否有绑定用户），0.未绑定  1.已绑定',
+  `online` tinyint(2) DEFAULT '0' COMMENT '设备在线状态, 0.主动离线 1.在线 2.服务器判断非正常离线',
+  `money` float DEFAULT '0' COMMENT '上次充值金额',
+  `batch` varchar(256) DEFAULT NULL COMMENT '生产批次',
+  `rechargeStatus` tinyint(2) DEFAULT '3' COMMENT '1.已充值 2.待充值 3.初始充值 4.欠费 5.停机',
+  `lastRechargeTime` bigint(20) DEFAULT '0' COMMENT '最后一次充值时间',
+  `expireTime` bigint(20) DEFAULT '0' COMMENT '停机截至时间',
+  `useFlow` bigint(20) DEFAULT '0' COMMENT '设备当月已使用的流量',
+  `totalFlow` bigint(20) DEFAULT '0' COMMENT '设备已使用总流量',
+  `activateTime` bigint(20) DEFAULT '0' COMMENT '设备的激活时间',
+  `simType` tinyint(2) DEFAULT '0' COMMENT 'sim卡类型：0.用户自备SIM卡 1.运营商定制卡',
+  `masterId` bigint(20) DEFAULT '0' COMMENT '车主ID(motor_user.id)',
+  `vendorId` bigint(20) NOT NULL DEFAULT '1' COMMENT '厂商ID',
+  `installed` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否已装配 0-已装配 1-未装配',
+  `inventoryInId` bigint(20) DEFAULT NULL COMMENT '入库操作ID',
+  `inventoryOutId` bigint(20) DEFAULT NULL COMMENT '出库操作ID',
+  `updateTime` bigint(20) DEFAULT '0' COMMENT '记录更新时间',
+  `createTime` bigint(20) DEFAULT '0' COMMENT '记录创建时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_IMEI` (`imei`)
+) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT COMMENT='设备表';
+
+

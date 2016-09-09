@@ -1,0 +1,29 @@
+{
+        "cache" : {
+                "class" : "easynode.framework.cache.Redis",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        "127.0.0.1",
+                        "6379"
+                ],
+                "props" : {
+                }
+        },
+        "smsPlugin" : {
+                "class" : "$plugin(sms-haoservice@0.0.1)",
+                "scope" : "singleton",
+                "options" : {
+                        "plugin.sms-haoservice.appKey" : "756547a3dfeb4682bb6e33d90ecaab7f"
+                }
+        },
+        "smsCaptchaPlugin" : {
+                "class" : "$plugin(sms-captcha@0.0.1)",
+                "scope" : "singleton",
+                "options" : {
+                        "plugin.sms-captcha.templateId" : 470,
+                        "cache" : "$cache",
+                        "pluginSMS" : "$smsPlugin"
+                }
+        }
+}

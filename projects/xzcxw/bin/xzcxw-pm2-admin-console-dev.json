@@ -1,0 +1,29 @@
+{
+        "apps": [
+                {
+                        "name": "xzcxw-admin-console",
+                        "script": "main.js",
+                        "args": [
+                                "--debug-output=true",
+                                "--src-dirs=projects/xzcxw/sub-systems/admin-console/src",
+                                "--main-class=cn.beneverse.xzcxw.admin.AdminConsoleMain",
+                                "--config-files=projects/xzcxw/sub-systems/admin-console/etc/admin-console-dev.conf",
+                                "--bean-definitions=projects/xzcxw/sub-systems/admin-console/etc/admin-console-beans.json"
+                        ],
+                        "pid_file": "xzcxw-admin-console.pid",
+                        "instances": 1,
+                        "watch": false,
+                        "node_args": "--harmony",
+                        "log_date_format": "",
+                        "log_file": "../logs/xzcxw-admin-console.log",
+                        "merge_logs": true,
+                        "min_uptime": "30s",
+                        "max_memory_restart": "1G",
+                        "autorestart": true,
+                        "cwd": "../../../bin",
+                        "env": {
+                        },
+                        "next_gen_js": true
+                }
+        ]
+}

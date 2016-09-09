@@ -1,0 +1,9 @@
+{
+        "standaloneController" : {
+                "class" : "easynode.framework.Standalone",
+                "scope" : "singleton",
+                "props" : {
+                        "bookshelf" : "$bookshelf"
+                }
+        }
+}

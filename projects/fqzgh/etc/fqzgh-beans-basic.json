@@ -1,0 +1,72 @@
+{
+        "httpServer" : {
+                "class" : "easynode.framework.server.http.KOAHttpServer",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        {
+                                "port" : "$int(site.api.httpServer.port)",
+                                "enableDefaultWebRoot" : true,
+                                "sessionStorage" : "$sessionStorage",
+                                "routeMapEntry" : "projects/fqzgh/etc/fqzgh-routes.json"
+                        }
+                ],
+                "props" : {
+                }
+        },
+        "bookshelf" : {
+                "class" : "easynode.framework.db.Bookshelf",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        {
+                                "host" : "$str(site.api.db.host)",
+                                "port" : "$int(site.api.db.port)",
+                                "user" : "$str(site.api.db.user)",
+                                "password" : "$str(site.api.db.password)",
+                                "database" : "$str(site.api.db.database)",
+                                "minConnections" : "$int(site.api.db.minConnections)",
+                                "maxConnections" : "$int(site.api.db.maxConnections)"
+                        }
+                ],
+                "props" : {
+                }
+        },
+        "mq" : {
+                "class" : "easynode.framework.mq.RedisListQueue",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        "$str(redis.host)",
+                        "$int(redis.port)",
+                        {
+                                "masterName" : "$str(redis.masterName)",
+                                "auth_pass" : "$str(redis.password)"
+                        }
+                ],
+                "props" : {
+                }
+        },
+        "cache" : {
+                "class" : "easynode.framework.cache.Redis",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        "$str(redis.host)",
+                        "$int(redis.port)",
+                        {
+                                "masterName" : "$str(redis.masterName)",
+                                "auth_pass" : "$str(redis.password)"
+                        }
+                ],
+                "props" : {
+                }
+        },
+        "sessionStorage" : {
+                "class" : "easynode.framework.server.http.KOACacheSessionStorage",
+                "scope" : "singleton",
+                "props" : {
+                        "cache" : "$cache"
+                }
+        }
+}

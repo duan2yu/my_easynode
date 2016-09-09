@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="result">
+
+
+</div>
+
+</body>
+<script src="./bundle.js"></script>
+<script>
+    var foo=require('foo'); var bar=require('bar');
+    var elem = document.getElementById('result');
+    var x = foo(100) + bar(100);
+    elem.innerHTML=x;
+    alert(x);
+</script>
+</html>

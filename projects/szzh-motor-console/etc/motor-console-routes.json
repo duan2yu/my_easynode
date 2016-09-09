@@ -1,0 +1,6 @@
+[
+        "@import(./motor-console-routes-user.json)",
+        "@import(./motor-console-routes-vendor.json)",
+        "@import(./motor-console-routes-device.json)",
+        "@import(./motor-console-routes-group.json)"
+]

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>展华科技产品集团用户管理系统</title>
+  <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+  <!-- Bootstrap 3.3.2 -->
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <!-- FontAwesome 4.3.0 -->
+  <link href="plugins/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <!-- Theme style -->
+  <link href="css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link href="css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+  <!-- Date Picker -->
+  <link href="plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+  <!-- Daterange picker -->
+  <link href="plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+  <!-- bootstrap checkbox -->
+  <link href="plugins/bootstrap-checkbox/css/bootstrap-checkbox.css" rel="stylesheet" type="text/css" />
+  <link href="css/app.css" rel="stylesheet" />
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="http://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+<script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
+<script src="js/diandongche.js" type="text/javascript"></script>
+</head>
+<body class="skin-blue" >
+<div class="wrapper">
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="/" class="logo">展华集团用户管理系统</a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">切换侧边栏</span>
+      </a>
+      
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu" id="sidebar-menu">
+      
+    </ul>
+    <script>
+        ddche.leftNav();
+    </script>
+  </section>
+  <!-- /.sidebar -->
+</aside>
+    <!--********************************************************************************************** -->
+<aside class="right-side">
+    <section class="content-header">
+      <div class="nav-tabs-custom">
+          <!-- Tabs within a box -->
+          <ul class="nav nav-tabs pull-right">
+              <li style="float:left;" class="active"><a href="#revenue-chart" data-toggle="tab">模糊查询</a></li>
+              <li style="float:left;"><a href="#sales-chart" data-toggle="tab">精确查询</a></li>
+              <li class="pull-right header car_list_online">
+                 
+              </li>
+          </ul>
+          <div class="tab-content no-padding">
+              <!-- Morris chart - Sales -->
+              <div class="chart tab-pane active" id="revenue-chart" style="position: relative;">
+
+              <!--模糊查询-->
+                
+               <div class="box-body">
+                  <form class="form-inline" data-parsley-validate>
+                    <div class="form-group">
+                      <label>分组名：</label>
+                        <select class="form-control groupList" name="deviceGroupName">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                      <label>设备类型：</label>
+                        <select class="form-control" name="deviceType">
+                            <option value="">请选择</option>
+                            <option value="CBB-100H">CBB-100H</option>
+                            <option value="q007">Q007</option>
+                            <option value="CBB-100G2">CBB-100G2</option>
+                        </select>
+                    </div>
+                   
+                    <button type="submit" class="btn btn-primary">查询</button>
+                  </form>
+              </div>
+              <!--模糊查询结束 -->
+              </div>
+              <div class="chart tab-pane" id="sales-chart" style="position: relative;">
+               <div class="box-body">
+              <!--精确查询-->
+                    <form class="form-inline" data-parsley-validate>
+                    <div class="form-group">
+                      <label>车牌号：</label>
+                      <input type="text" class="form-control"  name="vehicleNumber" placeholder="" >
+                    </div>
+                    <div class="form-group">
+                      <label>车主或司机电话：</label>
+                       <input type="text" class="form-control"   name="masterMobile" placeholder="" >
+                    </div>
+                    <button type="submit" class="btn btn-primary">查询</button>
+                  </form>
+                
+              <!--精确查询结束 -->
+            </div>
+              </div>
+          </div>
+      </div><!-- /.nav-tabs-custom -->
+      <div class="box">
+         <table class="table table-bordered">
+              <thead>
+                <tr>
+                    <th>车牌号</th>
+                    <th>IMEI</th>
+                    <th>分组</th>
+                    <th>车辆品牌</th>
+                    <th>车主电话</th>
+                    <th>司机电话</th>
+                    <th>服务截止</th>
+                    <th>设备型号</th>
+                    <th>操作</th>
+                </tr>
+              </thead>
+                <tbody id="cont">
+                </tbody>
+            </table>
+            <table style="display:none;">
+                <tbody id="temp" rel="/api/device/list" type="get" call="carList">
+                 <tr rel="{id}">
+                     <td>{vehicleNumber}</td>
+                      <td><a target="_blank" href="car-detail.html?carDeviceId={deviceId}">{imei}</a></td>
+                      <td>{deviceGroupName}</td>
+                      <td>暂无</td>
+                      <td>{masterMobile}</td>
+                      <td>{phone}</td>
+                      <td><a href="car-recharge-detail.html?imeiList={imei}&numList={vehicleNumber}&type={deviceType}">{serviceExpire}</a></td>
+                      <td>{deviceType}
+                      <td>
+                          <a href="car-map.html?imei={imei}" >定位</a>
+                        <!-- <a href="javascript:" action="ja/a" rel="car" class="deviceModal">定位</a> -->
+                        <a href="car-mapline.html?imei={imei}" >轨迹</a>
+                        <a href="car-device-gps.html?imei={imei}">GPS</a>
+                        <a href="javascript:" rel="status"  class="deviceModal" imei="{imei}">状态</a>
+                        <a href="javascript:" {controltype} class="deviceModal" imei="{imei}">控制</a>
+                      </td>
+                  </tr>
+                </tbody>
+            </table>
+             <div class="box-footer clearfix">
+                <ul class="pagination pagination-sm no-margin pull-right" id="page" relPage="5">
+
+                </ul>
+            </div>
+      </div>
+         
+    </section>
+  </aside>
+    <!--********************************************************************************************** -->
+<script>
+  var car_list_data={};
+
+  car_list_data.vehicleNumber=ddche.GetQueryString("vehicleNumber"),
+  car_list_data.masterMobile=ddche.GetQueryString("masterMobile"),
+  car_list_data.deviceGroupName=ddche.GetQueryString("deviceGroupName"),
+  car_list_data.deviceType=ddche.GetQueryString("deviceType");
+  for(var x in car_list_data){
+    $("[name='"+x+"']").val(decodeURI(car_list_data[x]));
+  }
+  if(car_list_data.vehicleNumber||car_list_data.masterMobile){
+    setTimeout(function(){
+      $(".nav-tabs li").eq(1).find("a").click();
+    },100);
+  }
+
+  function carList(data){
+     for(var i=0;i<data.result.data.length;i++){
+      if(data.result.data[i].deviceType=="CBB-100"||
+        data.result.data[i].deviceType=="CBB-100D"){
+        data.result.data[i].controltype="rel=\"confirm\"";
+      }else if(data.result.data[i].deviceType=="CBB-100H"){
+        data.result.data[i].controltype="rel=\"bike\"";
+      }else if(data.result.data[i].deviceType=="Q7244"){
+        data.result.data[i].controltype="rel=\"pet\"";
+      }else{
+        data.result.data[i].controltype="style=\"display:none\"";
+      }
+    }
+    return data;
+  }
+
+  $(function(){
+    $(document).on("click",".contralConfirm",function(e){
+        var that=$(this),
+        imei=that.closest(".modal").attr("imei"),
+        cmd=that.closest(".modal").find("input:checked").val();
+        $.ajax({
+          type:"post",
+          url:"/api/device/control/"+imei,
+          data:{
+            cmd:cmd
+          },
+          dataType:"json"
+        }).done(function(data){
+            that.closest(".modal").modal("hide");
+          if(data.code==0){
+            $(".modal_alert").modal().find(".modal-body").html("设置成功");
+          }else{
+            $(".modal_alert").modal().find(".modal-body").html("设置失败！请重试");
+          }
+        }).fail(function(){
+            $(".modal_alert").modal().find(".modal-body").html("设置失败！请重试");
+        });
+      });
+
+    //控制车辆前验证密码
+    $(".loginConfirm").click(function(){
+      var comfirm=$(".modal_confirm");
+        if(comfirm.find("input").val()){
+          $.ajax({
+            type:"post",
+            url:"/api/user/login",
+            data:{
+              name:sessionStorage.name,
+              pwd:comfirm.find("input").val()
+            }
+          }).done(function(data){
+              if(data.code==0){
+                $(".modal_car").modal();
+                $(".modal_car").attr("imei",comfirm.attr("imei"));
+              }
+          });
+        }
+    });
+
+  });
+
+</script>
+</div><!-- /.content -->
+</div><!-- /.content-wrapper -->
+<footer class="main-footer">
+  <div class="pull-right hidden-xs">
+    <b>电话：0755-82049709&nbsp;&nbsp;邮箱：zhanhuakj@foxmail.com&nbsp;&nbsp;深圳市车公庙天安数码时代大厦A座2207-2208号</b>
+  </div>
+  <strong>Copyright &copy; 2014-2025 <a href="#">深圳市展华科技有限公司</a>.</strong>
+</footer>
+</div><!-- ./wrapper -->
+<!--  -->
+
+<div class="modal modal_car" tabindex="-1" role="dialog" data-toggle="modal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body" style="overflow:hidden;">
+                  <label class="col-sm-6"><input name="privileges" value="1" type="radio" >执行断油断电</label>
+                  <label class="col-sm-6"><input name="privileges"   value="0" type="radio" >取消断油断电</label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary modal-confirm contralConfirm"  data-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal_bike" tabindex="-1" role="dialog" data-toggle="modal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body" style="overflow:hidden;">
+                  <label class="col-sm-4"><input name="privileges" value="3" type="radio" >设防</label>
+                  <label class="col-sm-4"><input name="privileges" value="2" type="radio" >撤防</label>
+                  <label class="col-sm-4"><input name="privileges" value="5" type="radio" >静音</label>
+                  <label class="col-sm-4"><input name="privileges" value="9" type="radio" >寻车</label>
+                  <label class="col-sm-4"><input name="privileges" value="7" type="radio" >启动</label>
+                <!--后台无法提供控制指令-->
+                 <!-- <label class="col-sm-6"><input name="privileges" value="admin" type="radio" >启用遥控器免钥匙启动</label>
+                  <label class="col-sm-6"><input name="privileges" value="admin" type="radio" >禁用遥控器免钥匙启动</label>-->
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary modal-confirm contralConfirm" data-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal_pet" tabindex="-1" role="dialog" data-toggle="modal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body" style="overflow:hidden;">
+                  <label class="col-sm-6"><input name="privileges" value="10" type="radio" >电击模式</label>
+                  <label class="col-sm-6"><input name="privileges" value="11" type="radio" >马达震动模式</label>
+                  <label class="col-sm-6"><input name="privileges" value="12" type="radio" >蜂鸣器模式</label>
+                  <label class="col-sm-6"><input name="privileges" value="13" type="radio" >LED闪烁模式</label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary modal-confirm contralConfirm" data-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal_status" tabindex="-1" role="dialog" data-toggle="modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">实时状态</h4>
+          </div>
+            <div class="modal-body" style="overflow:hidden;">
+                 <div class="form-line col-sm-6">
+                   <label class="col-sm-5">imei：</label>
+                   <span class="form-contral" name="IMEI"></span>
+                 </div>
+                 <div class="form-line col-sm-6">
+                   <label class="col-sm-5">采集时间</label>
+                   <span class="form-contral" name="updateTime"></span>
+                 </div>
+                  <div class="form-line col-sm-6">
+                   <label c class="col-sm-5">总里程：</label>
+                   <span class="form-contral" name=""></span>
+                 </div>
+                  <div class="form-line col-sm-6">
+                   <label  class="col-sm-5">总时间：</label>
+                   <span class="form-contral" name=""></span>
+                 </div>
+                  <div class="form-line col-sm-6">
+                   <label class="col-sm-5">今日里程：</label>
+                   <span class="form-contral" name=""></span>
+                 </div>
+                  <div class="form-line col-sm-6">
+                   <label class="col-sm-5">今日时间：</label>
+                   <span class="form-contral" name="rideTimeOfDay"></span>
+                 </div>
+                  <div class="form-line col-sm-6">
+                   <label class="col-sm-5">电量：</label>
+                   <span class="form-contral" name="power"></span>
+                 </div>
+                  <div class="form-line col-sm-6">
+                   <label class="col-sm-5">网络信号：</label>
+                   <span class="form-contral" name=""></span>
+                 </div>
+                  <div class="form-line col-sm-6">
+                   <label class="col-sm-6">gps卡状态：</label>
+                   <span class="form-contral" name=""></span>
+                 </div>
+                  <div class="form-line col-sm-6">
+                   <label class="col-sm-6">SIM卡状态：</label>
+                   <span class="form-contral" name="simState"></span>
+                 </div>
+                  <div class="form-line col-sm-6">
+                   <label class="col-sm-5">布防状态：</label>
+                   <span class="form-contral" name="vehicleState"></span>
+                 </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary modal-confirm" data-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade modal_alert" tabindex="-1" role="dialog" data-toggle="modal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary modal-confirm" data-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal_confirm" tabindex="-1" role="dialog" data-toggle="modal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">请勿随意控制车辆</h4>
+            </div>
+            <div class="modal-body">
+                  <label>登录密码：</label>
+                  <input type="password" class="form-control" placeholder="请输入密码" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary loginConfirm" data-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  -->
+
+<!-- jQuery 2.1.3 -->
+<!-- parsley.js -->
+<script>
+window.ParsleyConfig = {
+  errorsWrapper: '<span class="parsley-error"></span>',
+  errorTemplate: '<span></span>'
+};
+</script>
+<script src="plugins/bower_components/parsleyjs/dist/parsley.js"></script>
+<script src="plugins/bower_components/parsleyjs/src/i18n/zh_cn.js"></script>
+<!-- jQuery UI 1.11.2 -->
+<script src="plugins/jQueryUI/jquery-ui.min.js" type="text/javascript"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.2 JS -->
+<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<!-- Bootstrap-Checkbox -->
+<script src="plugins/bootstrap-checkbox/js/bootstrap-checkbox.js" type="text/javascript"></script>
+<!-- Sparkline -->
+<script src="plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+<!-- daterangepicker -->
+<script src="plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+<!-- datepicker -->
+<script src="plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
+<!-- Slimscroll -->
+<script src="plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<!-- FastClick -->
+<script src='plugins/fastclick/fastclick.min.js'></script>
+<!-- Momentjs-->
+<script src='plugins/moment/moment.js'></script>
+<!-- Jquery serializeJson-->
+<script src="plugins/serialize-object/jquery.serialize-object.min.js"></script>
+<!-- AdminLTE App -->
+<script src="js/app.min.js" type="text/javascript"></script>
+</body>
+</html>

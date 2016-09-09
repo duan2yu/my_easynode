@@ -1,0 +1,10 @@
+{
+        "cmsController" : {
+                "class" : "cn.beneverse.xzcxw.api.controllers.CMSController",
+                "scope" : "singleton",
+                "props" : {
+                        "bookshelf" : "$bookshelf",
+                        "constants" : "$constants"
+                }
+        }
+}

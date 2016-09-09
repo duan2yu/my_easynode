@@ -1,0 +1,74 @@
+[
+        {
+                "comment": "新增电子围栏",
+                "id": "createElectronicFence",
+                "uri": "/api/electronic-fence/create",
+                "http-method": "get/post",
+                "controller": "$electronicFenceController",
+                "handler": "create",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "更新电子围栏",
+                "id": "updateElectronicFence",
+                "uri": "/api/electronic-fence/update/:efId",
+                "http-method": "get/post",
+                "controller": "$electronicFenceController",
+                "handler": "update",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "删除电子围栏",
+                "id": "deleteElectronicFence",
+                "uri": "/api/electronic-fence/delete/:efId",
+                "http-method": "get/post",
+                "controller": "$electronicFenceController",
+                "handler": "delete",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "查询集团电子围栏区域列表",
+                "id": "listElectronicFence",
+                "uri": "/api/electronic-fence/list",
+                "http-method": "get/post",
+                "controller": "$electronicFenceController",
+                "handler": "list",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "查询集团电子围栏关联的设备清单",
+                "id": "listElectronicFenceDevices",
+                "uri": "/api/electronic-fence/:efId/devices",
+                "http-method": "get/post",
+                "controller": "$electronicFenceController",
+                "handler": "queryEFDevices",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "同步设备的电子围栏配置到设备",
+                "id": "syncElectronicFence",
+                "uri": "/api/electronic-fence/sync/:imei",
+                "http-method": "get/post",
+                "controller": "$electronicFenceController",
+                "handler": "syncDeviceElectronicFence",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "查询设备的电子围栏配置",
+                "id": "listDeviceElectronicFence",
+                "uri": "/api/electronic-fence/device-fences/:imei",
+                "http-method": "get/post",
+                "controller": "$electronicFenceController",
+                "handler": "listDeviceElectronicFences",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "启用/禁用电子围栏功能",
+                "id": "toggleDeviceElectronicFence",
+                "uri": "/api/electronic-fence/toggle/:efId/:flag",
+                "http-method": "get/post",
+                "controller": "$electronicFenceController",
+                "handler": "toggleDeviceEF",
+                "filters": ["$privilegeFilter"]
+        }
+]

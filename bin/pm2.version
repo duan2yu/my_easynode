@@ -1,0 +1,3 @@
+pm2@0.14.7 支持babel-node，新版本next-gen-js特性已经去掉了。
+
+sudo cnpm install -g pm2@0.14.7

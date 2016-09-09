@@ -1,0 +1,77 @@
+[
+        {
+                "comment" : "用户登录",
+                "uri": "/api/user/login",
+                "http-method": "get/post",
+                "controller": "$userSessionController",
+                "handler": "login"
+        },
+        {
+                "comment" : "用户登出",
+                "uri": "/api/user/logout",
+                "http-method": "get",
+                "controller": "$userSessionController",
+                "handler": "logout"
+        },
+        {
+                "comment" : "获取当前登录的用户",
+                "uri": "/api/user/getLoginUser",
+                "http-method": "get",
+                "controller": "$userSessionController",
+                "handler": "getLoginUser"
+        },
+        {
+                "comment" : "更新用户资料",
+                "id" : "UPDATE_USER",
+                "uri": "/api/user/update/:id",
+                "http-method": "get/post",
+                "controller": "$userController",
+                "handler": "updateUserInfo",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "创建新用户",
+                "id" : "CREATE_USER",
+                "uri": "/api/user/create",
+                "http-method": "get/post",
+                "controller": "$userController",
+                "handler": "createUser",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "删除用户",
+                "id" : "DEL_USER",
+                "uri": "/api/user/delete/:id",
+                "http-method": "get",
+                "controller": "$userController",
+                "handler": "deleteUser",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "查询用户列表",
+                "id" : "LIST_USER",
+                "uri": "/api/user/list",
+                "http-method": "get",
+                "controller": "$userController",
+                "handler": "listUsers",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "获取用户详细资料",
+                "id" : "READ_USER",
+                "uri": "/api/user/info/:id",
+                "http-method": "get",
+                "controller": "$userController",
+                "handler": "readUserInfo",
+                "filters" : ["$privilegeFilter"]
+        },
+        {
+                "comment" : "获取用户可见厂商",
+                "id" : "USER_VENDORS",
+                "uri": "/api/user/visibleVendors",
+                "http-method": "get",
+                "controller": "$userController",
+                "handler": "listVisibleVendors",
+                "filters" : ["$privilegeFilter"]
+        }
+]

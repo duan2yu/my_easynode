@@ -1,0 +1,100 @@
+{
+        "httpServer": {
+                "class": "easynode.framework.server.http.KOAHttpServer",
+                "scope": "singleton",
+                "init": "initialize",
+                "init-args": [
+                        {
+                                "port": "$int(ydgps.web.httpServer.port)",
+                                "enableDefaultWebRoot": true,
+                                "sessionStorage": "$sessionStorage",
+                                "routeMapEntry": "projects/ydgps/sub-systems/web/etc/ydgps-web-routes.json"
+                        }
+                ],
+                "props": {
+                }
+        },
+        "bookshelf": {
+                "class": "easynode.framework.db.Bookshelf",
+                "scope": "singleton",
+                "init": "initialize",
+                "init-args": [
+                        {
+                                "host": "$str(ydgps.web.db.host)",
+                                "port": "$int(ydgps.web.db.port)",
+                                "user": "$str(ydgps.web.db.user)",
+                                "password": "$str(ydgps.web.db.password)",
+                                "database": "$str(ydgps.web.db.database)",
+                                "minConnections": "$int(ydgps.web.db.minConnections)",
+                                "maxConnections": "$int(ydgps.web.db.maxConnections)"
+                        }
+                ],
+                "props": {
+                }
+        },
+        "mq": {
+                "class": "easynode.framework.mq.RedisListQueue",
+                "scope": "singleton",
+                "init": "initialize",
+                "init-args": [
+                        "$str(redis.host)",
+                        "$int(redis.port)",
+                        {
+                                "masterName": "$str(redis.masterName)",
+                                "auth_pass": "$str(redis.password)"
+                        }
+                ],
+                "props": {
+                }
+        },
+        "cache": {
+                "class": "easynode.framework.cache.Redis",
+                "scope": "singleton",
+                "init": "initialize",
+                "init-args": [
+                        "$str(redis.host)",
+                        "$int(redis.port)",
+                        {
+                                "masterName": "$str(redis.masterName)",
+                                "auth_pass": "$str(redis.password)"
+                        }
+                ],
+                "props": {
+                }
+        },
+        "mongodbOpts": {
+                "class": "easynode.framework.util.ObjectWrapper",
+                "scope": "singleton",
+                "props": {
+                        "opts": {
+                        }
+                }
+        },
+        "sessionStorage": {
+                "class": "easynode.framework.server.http.KOACacheSessionStorage",
+                "scope": "singleton",
+                "props": {
+                        "cache": "$cache"
+                }
+        },
+        "simulatedLoginUser": {
+                "class": "easynode.Notation",
+                "scope": "singleton",
+                "props": {
+                        "id": 1,
+                        "name": "groupUser1",
+                        "realName": "某集团用户",
+                        "groupId": 0,
+                        "privileges": []
+                }
+        },
+        "rbacPlugin": {
+                "class": "$plugin(rbac@0.0.1)",
+                "scope": "singleton",
+                "options": {
+                        "bookshelf" : "$bookshelf",
+                        "cache" : "$cache",
+                        "util" : "$motorConsoleUtil"
+                }
+        }
+}

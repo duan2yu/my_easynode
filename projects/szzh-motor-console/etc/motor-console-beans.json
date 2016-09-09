@@ -1,0 +1,6 @@
+{
+        "@import" : [
+                "./motor-console-beans-basic.json",
+                "./motor-console-beans-controllers.json"
+                ]
+}

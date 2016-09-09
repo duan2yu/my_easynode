@@ -1,0 +1,12 @@
+[
+        {
+                "comment" : "hello world",
+                "id" : "SAY_HELLO",
+                "uri": "/hello",
+                "http-method": "get",
+                "controller": "$standaloneController",
+                "handler": "sayHello",
+                "content-type": "application/json",
+                "filters" : []
+        }
+]

@@ -1,0 +1,58 @@
+{
+        "redisQueue": {
+                "class": "easynode.framework.mq.RedisListQueue",
+                "scope": "singleton",
+                "init": "initialize",
+                "init-args": [
+                        "$str(redis.host)",
+                        "$int(redis.port)",
+                        {
+                                "masterName": "$str(redis.masterName)",
+                                "auth_pass": "$str(redis.password)"
+                        }
+                ],
+                "props": {
+                }
+        },
+        "snapshotCache": {
+                "class": "easynode.framework.cache.Redis",
+                "scope": "singleton",
+                "init": "initialize",
+                "init-args": [
+                        "$str(redis.host)",
+                        "$int(redis.port)",
+                        {
+                                "masterName": "$str(redis.masterName)",
+                                "auth_pass": "$str(redis.password)"
+                        }
+                ],
+                "props": {
+                }
+        },
+        "bookshelf": {
+                "class": "easynode.framework.db.Bookshelf",
+                "scope": "singleton",
+                "init": "initialize",
+                "init-args": [
+                        {
+                                "host": "$str(cbb100.sync.db.host)",
+                                "port": "$int(cbb100.sync.db.port)",
+                                "user": "$str(cbb100.sync.db.user)",
+                                "password": "$str(cbb100.sync.db.password)",
+                                "database": "$str(cbb100.sync.db.database)",
+                                "minConnections": "$int(cbb100.sync.db.minConnections)",
+                                "maxConnections": "$int(cbb100.sync.db.maxConnections)"
+                        }
+                ],
+                "props": {
+                }
+        },
+        "syncDailyStatScheduler": {
+                "class": "szzh.cbb100.sync.SyncDailyStatScheduler",
+                "scope": "singleton",
+                "props": {
+                        "cache" : "$snapshotCache",
+                        "bookshelf" : "$bookshelf"
+                }
+        }
+}

@@ -1,0 +1,245 @@
+{
+        "device": [
+                {
+                        "action-name": "info",
+                        "description": "查询终端详细信息",
+                        "enabled": false
+                },
+                {
+                        "action-name": "save",
+                        "description": "保存终端信息",
+                        "enabled": false
+                },
+                {
+                        "action-name": "online-list",
+                        "action-class": "beneverse.ccms.service.actions.OnlineList",
+                        "description": "查询在线终端列表（管理员）",
+                        "enabled": true
+                },
+                {
+                        "action-name": "bind",
+                        "description": "绑定终端",
+                        "enabled": false
+                },
+                {
+                        "action-name": "bind-audit",
+                        "description": "绑定终端审核",
+                        "enabled": false
+                },
+                {
+                        "action-name": "unbind",
+                        "description": "解除终端绑定",
+                        "enabled": false
+                },
+                {
+                        "action-name": "change-owner",
+                        "description": "用户修改终端的拥有者（主绑定关系）",
+                        "enabled": false
+                },
+                {
+                        "action-name": "list",
+                        "description": "查询用户绑定的终端列表",
+                        "enabled": false
+                },
+                {
+                        "action-name": "snapshot",
+                        "description": "查询终端实时数据",
+                        "enabled": false
+                },
+                {
+                        "action-name": "history",
+                        "description": "查询终端历史数据",
+                        "enabled": false
+                }
+        ],
+        "device-config": [
+                {
+                        "action-name": "items",
+                        "description": "查询终端配置项清单",
+                        "enabled": true
+                },
+                {
+                        "action-name": "save",
+                        "description": "保存终端配置",
+                        "enabled": true
+                },
+                {
+                        "action-name": "sync",
+                        "description": "同步终端配置到硬件",
+                        "enabled": true
+                }
+        ],
+        "alarm": [
+                {
+                        "action-name": "list",
+                        "description": "查询终端告警列表",
+                        "enabled": false
+                }
+        ],
+        "transport-job": [
+                {
+                        "action-name": "import",
+                        "description": "导入任务单数据",
+                        "enabled": false
+                },
+                {
+                        "action-name": "list",
+                        "description": "查询用户任务单列表",
+                        "enabled": false
+                },
+                {
+                        "action-name": "info",
+                        "description": "查询任务单详情",
+                        "enabled": false
+                },
+                {
+                        "action-name": "sc-start",
+                        "description": "任务单状态变更-启动",
+                        "enabled": false
+                },
+                {
+                        "action-name": "sc-finish",
+                        "description": "任务单状态变更-完成",
+                        "enabled": false
+                },
+                {
+                        "action-name": "sc-cancel",
+                        "description": "任务单状态变更-取消",
+                        "enabled": false
+                },
+                {
+                        "action-name": "history",
+                        "description": "任务单历史数据查询",
+                        "enabled": false
+                }
+        ],
+        "waybill": [
+                {
+                        "action-name": "sc-goods-load",
+                        "description": "运单状态变更-已接货",
+                        "enabled": false
+                },
+                {
+                        "action-name": "sc-start",
+                        "description": "运单状态变更-正在运输",
+                        "enabled": false
+                },
+                {
+                        "action-name": "sc-finish",
+                        "description": "运单状态变更-完全运输",
+                        "enabled": false
+                },
+                {
+                        "action-name": "sc-sign",
+                        "description": "运单状态变更-已签收",
+                        "enabled": false
+                },
+                {
+                        "action-name": "sc-refuse",
+                        "description": "运单状态变更-拒收",
+                        "enabled": false
+                },
+                {
+                        "action-name": "sc-cancel",
+                        "description": "运单状态变更-取消",
+                        "enabled": false
+                },
+                {
+                        "action-name": "history",
+                        "description": "运单历史数据查询",
+                        "enabled": false
+                }
+        ],
+        "sharing": [
+                {
+                        "description": "查询分享清单",
+                        "enabled": false
+                },
+                {
+                        "description": "历史数据分享",
+                        "enabled": false
+                },
+                {
+                        "description": "任务单数据分享",
+                        "enabled": false
+                },
+                {
+                        "description": "运单数据分享",
+                        "enabled": false
+                },
+                {
+                        "description": "取消分享",
+                        "enabled": false
+                }
+        ],
+        "user": [
+                {
+                        "action-name": "register",
+                        "description": "用户注册",
+                        "enabled": false
+                },
+                {
+                        "action-name": "change-pwd",
+                        "description": "修改密码",
+                        "enabled": false
+                },
+                {
+                        "action-name": "reset-pwd",
+                        "description": "验证短信验证码并重置密码",
+                        "enabled": false
+                }
+        ],
+        "driver" : [
+                {
+                        "action-name": "register",
+                        "description": "用户注册一个司机用户",
+                        "enabled": false
+                }
+        ],
+        "admin": [
+                {
+                        "action-name": "online-list",
+                        "action-class": "beneverse.ccms.service.actions.OnlineList",
+                        "description": "查询在线终端列表（管理员）",
+                        "enabled": true
+                },
+                {
+                        "action-name": "send-device-info",
+                        "description": "向某手机号码发送终端信息（设备编号、MEID和密码）",
+                        "enabled": false
+                },
+                {
+                        "action-name": "app-stat",
+                        "description": "系统统计",
+                        "enabled": false
+                },
+                {
+                        "action-name": "import-devices",
+                        "description": "导入一批终端",
+                        "enabled": false
+                },
+                {
+                        "action-name": "register-device",
+                        "description": "注册一个终端",
+                        "enabled": false
+                },
+                {
+                        "action-name": "device-teletext",
+                        "description": "终端报文查询",
+                        "enabled": false
+                },
+                {
+                        "action-name": "sms-list",
+                        "description": "查询短信下发记录",
+                        "enabled": false
+                }
+        ],
+        "intranet": [
+                {
+                        "action-name": "query-device-info",
+                        "action-class": "beneverse.ccms.service.actions.intranet.QueryDeviceInfo",
+                        "description": "查询终端数据、绑定关系和配置（内部API）",
+                        "enabled": true
+                }
+        ]
+}

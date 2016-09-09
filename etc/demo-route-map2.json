@@ -1,0 +1,9 @@
+[
+        {
+                "uri": "/test5",
+                "http-method": "get",
+                "controller": "easynode.tests.controllers.TestController",
+                "handler": "test",
+                "content-type": "application/json"
+        }
+]

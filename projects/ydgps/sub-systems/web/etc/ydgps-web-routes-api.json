@@ -1,0 +1,353 @@
+[
+        {
+                "comment": "用户登录",
+                "id": "userLogin",
+                "uri": "/api/user/login",
+                "http-method": "get/post",
+                "controller": "$userSessionController",
+                "handler": "login",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "用户登出",
+                "id": "userLogout",
+                "uri": "/api/user/logout",
+                "http-method": "get/post",
+                "controller": "$userSessionController",
+                "handler": "logout",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "获取系统登录用户",
+                "id": "getLoginUser",
+                "uri": "/api/user/getLoginUser",
+                "http-method": "get",
+                "controller": "$userSessionController",
+                "handler": "getLoginUser",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "修改密码",
+                "id": "changeUserPassword",
+                "uri": "/api/user/changePwd/:userId",
+                "http-method": "get/post",
+                "controller": "$userController",
+                "handler": "changeUserPassword",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "新增用户",
+                "id": "createUser",
+                "uri": "/api/user/create",
+                "http-method": "get/post",
+                "controller": "$userController",
+                "handler": "create",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "读取用户信息",
+                "id": "readUser",
+                "uri": "/api/user/read/:userId",
+                "http-method": "get",
+                "controller": "$userController",
+                "handler": "readUserInfo",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "修改用户信息",
+                "id": "updateUser",
+                "uri": "/api/user/update/:userId",
+                "http-method": "get/post",
+                "controller": "$userController",
+                "handler": "updateUserInfo",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "删除用户",
+                "id": "deleteUser",
+                "uri": "/api/user/delete/:userId",
+                "http-method": "get/post",
+                "controller": "$userController",
+                "handler": "deleteUser",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "用户绑定角色",
+                "id": "bindRole",
+                "uri": "/api/user/bindRole/:userId",
+                "http-method": "get/post",
+                "controller": "$userController",
+                "handler": "bindRole",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "用户绑定设备分组",
+                "id": "bindDeviceGroup",
+                "uri": "/api/user/bindDeviceGroup/:userId",
+                "http-method": "get/post",
+                "controller": "$userController",
+                "handler": "bindDeviceGroup",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "查询用户列表",
+                "id": "listUser",
+                "uri": "/api/user/list",
+                "http-method": "get",
+                "controller": "$userController",
+                "handler": "listUsers",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "读取集团信息(用户所属集团)",
+                "id": "readGroup",
+                "uri": "/api/group/read/:groupId",
+                "http-method": "get",
+                "controller": "$groupController",
+                "handler": "read",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "修改集团信息(用户所属集团)",
+                "id": "updateGroup",
+                "uri": "/api/group/update/:groupId",
+                "http-method": "get/post",
+                "controller": "$groupController",
+                "handler": "update",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "新增设备分组（集团）",
+                "id": "createDeviceGroup",
+                "uri": "/api/deviceGroup/create",
+                "http-method": "get/post",
+                "controller": "$deviceGroupController",
+                "handler": "create",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "更新设备分组（集团）",
+                "id": "updateDeviceGroup",
+                "uri": "/api/deviceGroup/update/:deviceGroupId",
+                "http-method": "get/post",
+                "controller": "$deviceGroupController",
+                "handler": "update",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+        "comment": "查询设备分组详情（集团）",
+        "id": "readDeviceGroup",
+        "uri": "/api/deviceGroup/read/:deviceGroupId",
+        "http-method": "get/post",
+        "controller": "$deviceGroupController",
+        "handler": "read",
+        "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "删除设备分组（集团）",
+                "id": "deleteDeviceGroup",
+                "uri": "/api/deviceGroup/delete/:deviceGroupId",
+                "http-method": "get/post",
+                "controller": "$deviceGroupController",
+                "handler": "delete",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "查询设备分组列表",
+                "id": "listDeviceGroup",
+                "uri": "/api/deviceGroup/list",
+                "http-method": "get",
+                "controller": "$deviceGroupController",
+                "handler": "list",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "查询设备分组列表",
+                "id": "listDeviceGroup",
+                "uri": "/api/deviceGroup/listDetail",
+                "http-method": "get",
+                "controller": "$deviceGroupController",
+                "handler": "listDetail",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "更新设备分组和设备绑定关系",
+                "id": "updateDeviceGroup",
+                "uri": "/api/deviceGroup/updateDevice/:deviceGroupId",
+                "http-method": "get/post",
+                "controller": "$deviceGroupController",
+                "handler": "updateDevice",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "设备配置查询",
+                "id": "readDeviceConfig",
+                "uri": "/api/device/config/read/:deviceId",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "readConfig",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "设备配置变更",
+                "id": "updateDeviceConfig",
+                "uri": "/api/device/config/update/:deviceId",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "updateConfig",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "g2定时上报",
+                "id": "g2ReportTime",
+                "uri": "/api/device/config/g2ReportTime/:deviceId",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "g2ReportTime",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "新增设备(单个)",
+                "id": "createDevice",
+                "uri": "/api/device/create",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "create",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "sim卡充值",
+                "id": "simCharge",
+                "uri": "/api/device/simCharge/:deviceId",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "simCharge",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "查询设备列表(用户所属集团)",
+                "id": "listDevice",
+                "uri": "/api/device/list",
+                "http-method": "get",
+                "controller": "$deviceController",
+                "handler": "list",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "读取设备信息",
+                "id": "readDevice",
+                "uri": "/api/device/read/:deviceId",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "read",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "车辆点名",
+                "id": "readDevices",
+                "uri": "/api/device/readDevices",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "readDevices",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "删除设备（集团）",
+                "id": "deleteDevice",
+                "uri": "/api/device/delete/:deviceId",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "delete",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "查询未分组设备",
+                "id": "queryDeviceWithOutGroup",
+                "uri": "/api/device/queryDeviceWithOutGroup",
+                "http-method": "get",
+                "controller": "$deviceController",
+                "handler": "queryDeviceWithOutGroup",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "查询设备类型列表清单",
+                "id": "queryDeviceTypes",
+                "uri": "/api/device/deviceTypes",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "queryDeviceTypes",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "变更设备服务期",
+                "id": "updateDeviceServiceExpire",
+                "uri": "/api/device/updateServiceExpire/:deviceId",
+                "http-method": "get/post",
+                "controller": "$none",
+                "handler": "$none",
+                "filters": ["$simulateFilter"]
+        },
+        {
+                "comment": "设备SIM卡充值",
+                "id": "simCharge",
+                "uri": "/api/device/simCharge/:deviceId",
+                "http-method": "get/post",
+                "controller": "$none",
+                "handler": "$none",
+                "filters": ["$simulateFilter"]
+        },
+        {
+                "comment": "设备实时数据查询",
+                "id": "queryDeviceSnapshot",
+                "uri": "/api/device/snapshot/:imei",
+                "http-method": "get",
+                "controller": "$deviceController",
+                "handler": "snapshot",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "设备轨迹数据查询",
+                "id": "queryDeviceTrack",
+                "uri": "/api/device/track/:imei",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "track",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "设备报警数据查询",
+                "id": "queryDeviceAlarm",
+                "uri": "/api/device/alarm",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "alarm",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "下发控制指令",
+                "id": "deviceControl",
+                "uri": "/api/device/control/:imei",
+                "http-method": "get/post",
+                "controller": "$deviceController",
+                "handler": "control",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "服务充值",
+                "id": "serviceCharge",
+                "uri": "/api/charge",
+                "http-method": "get/post",
+                "controller": "$chargeController",
+                "handler": "charge",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "设备统计(在线状态)",
+                "id": "deviceCount",
+                "uri": "/api/device/count",
+                "http-method": "get",
+                "controller": "$deviceController",
+                "handler": "count",
+                "filters": ["$privilegeFilter"]
+        }
+]

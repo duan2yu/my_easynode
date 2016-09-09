@@ -1,0 +1,22 @@
+[
+        {
+                "comment": "管理员-首页",
+                "id": "adminHome",
+                "uri": "/admin/dashboard",
+                "http-method": "get",
+                "controller": "$none",
+                "handler": "$none",
+                "content-type": "text/html",
+                "view": "admin/index.swig"
+        },
+        {
+                "comment": "管理员-图表",
+                "id": "adminCharts",
+                "uri": "/admin/charts",
+                "http-method": "get",
+                "controller": "$none",
+                "handler": "$none",
+                "content-type": "text/html",
+                "view": "admin/chart.swig"
+        }
+]

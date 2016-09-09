@@ -1,0 +1,58 @@
+[
+        {
+                "comment": "新增角色",
+                "id": "addRole",
+                "uri": "/api/role/create",
+                "http-method": "get/post",
+                "controller": "$roleController",
+                "handler": "create",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "修改角色信息",
+                "id": "updateRole",
+                "uri": "/api/role/update/:roleId",
+                "http-method": "get/post",
+                "controller": "$roleController",
+                "handler": "update",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "删除角色",
+                "id": "deleteRole",
+                "uri": "/api/role/delete/:roleId",
+                "http-method": "get/post",
+                "controller": "$roleController",
+                "handler": "delete",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "查询角色列表",
+                "id": "listRoles",
+                "uri": "/api/role/list",
+                "http-method": "get/post",
+                "controller": "$roleController",
+                "handler": "list",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "角色绑定权限",
+                "id": "bindPrivileges",
+                "uri": "/api/role/bindPrivileges/:roleId",
+                "http-method": "get/post",
+                "controller": "$roleController",
+                "handler": "bindPrivileges",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "查询角色已绑定的权限",
+                "id": "queryBindPrivileges",
+                "uri": "/api/role/queryBindPrivileges/:roleId",
+                "http-method": "get/post",
+                "controller": "$roleController",
+                "handler": "queryBindPrivileges",
+                "filters": ["$privilegeFilter"]
+        }
+
+
+]

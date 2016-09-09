@@ -1,0 +1,33 @@
+[
+        {
+                "comment": "支付宝即到账充值-显示订单详情页面",
+                "id": "alipayDirectPayDisplayOrderInfo",
+                "uri": "/charge/alipay/order-info",
+                "http-method": "get",
+                "controller": "$chargeController",
+                "handler": "alipayDirectPayDisplayChargeOrder",
+                "filters": [],
+                "content-type": "text/html",
+                "view": "alipay-order-info.swig"
+        },
+        {
+                "comment": "支付宝即到账充值-完成返回页面",
+                "id": "alipayDirectPayReturn",
+                "uri": "/charge/alipay/return",
+                "http-method": "get",
+                "controller": "$chargeController",
+                "handler": "alipayDirectPayChargeReturn",
+                "filters": [],
+                "content-type": "text/html",
+                "view": "alipay-return.swig"
+        },
+        {
+                "comment": "支付宝即到账充值-完成通知接口",
+                "id": "alipayDirectPayNotify",
+                "uri": "/charge/alipay/notify",
+                "http-method": "get",
+                "controller": "$chargeController",
+                "handler": "alipayDirectPayChargeNotify",
+                "filters": []
+        }
+]

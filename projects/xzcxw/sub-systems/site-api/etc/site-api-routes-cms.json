@@ -1,0 +1,10 @@
+[
+        {
+                "comment" : "查询分类内容列表",
+                "id" : "CMS_CATALOG_CONTENT_LIST",
+                "uri": "/api/cms/catalog/list/:identityName",
+                "http-method": "get",
+                "controller": "$cmsController",
+                "handler": "queryCatalogContentList"
+        }
+]

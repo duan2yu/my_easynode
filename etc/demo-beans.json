@@ -1,0 +1,49 @@
+{
+        "@import" : ["./demo-beans2.json"],
+        "bean1" : {
+                "class" : "easynode.tests.TestBean1",
+                "scope" : "singleton",
+                "init" : "init",
+                "init-args" : [],
+                "props" : {
+                        "knex" : "$bean2.knex"
+                }
+        },
+        "bean2" : {
+                "class" : "easynode.framework.db.Bookshelf",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        {
+                                "host" : "192.168.0.25",
+                                "port" : 3306,
+                                "user" : "root",
+                                "password" : "zlbbq99",
+                                "database" : "easynode"
+                        },
+                        "easynode.tests.models.*",
+                        "easynode.tests.models.t.*"
+                ],
+                "props" : {
+                }
+        },
+        "bean3" : {
+                "class" : "$require(tests/src/easynode/tests/fp-example.js)",
+                "init" : "init",
+                "props" : {
+                        "bookshelf" : "$bean2.bookshelf"
+                }
+        },
+        "pluginsMPRF" : {
+                "class" : "easynode.framework.db.BookshelfModelProxyRouteFactory",
+                "init" : "initialize",
+                "init-args" : [
+                        {
+                                "bookshelf" : "$bean2",
+                                "modelName" : "Plugins",
+                                "uriPrefix" : "/ttb",
+                                "restful" : false
+                        }
+                ]
+        }
+}

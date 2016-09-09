@@ -1,0 +1,9 @@
+[
+        {
+                "name" : "sync-daily-statistics",
+                "description" : "每天1:00将昨日设备统计数据从Cache写到数据库",
+                "cron-expression" : "0 0 1 * * *",
+                "executor" : "$syncDailyStatScheduler",
+                "enabled" : true
+        }
+]

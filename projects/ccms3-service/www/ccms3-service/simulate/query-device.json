@@ -1,0 +1,30 @@
+{
+        "deviceNo" : 1,
+        "deviceId" : "15121061",
+        "deviceName" : "浙A-12345",
+        "deviceMeid" : "A0000038D2ADCB9",
+        "deviceModal" : "CCMS-04",
+        "deviceFirmware" : "v2.0",
+        "devicePwd" : "2ADCB9",
+        "deviceAttrsJson" : null,
+        "serviceExpire" : "2015-07-30 00:00:00",
+        "createTime" : "2015-07-17 00:00:00",
+        "deviceStatus" : "1",
+        "bindings" : ["zlbbq", "dsj"],
+        "configuration" : {
+                "channels" : 2,
+                "corp" : "浙江泽物信息科技有限公司",
+                "alarmReceipts" : "18658187318,18658187308",
+                "showHum" : 1,
+                "tempAdjustment1" : 0,
+                "humAdjustment1" : 0,
+                "tempAdjustment2" : 0,
+                "humAdjustment2" : 0,
+                "tempRange1" : "2,8",
+                "humRange1" : ",",
+                "tempRange2" : "2,8",
+                "humRange2" : ",",
+                "channelName1" : "第1路",
+                "channelName2" : "第2路"
+        }
+}

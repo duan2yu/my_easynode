@@ -1,0 +1,76 @@
+[
+        {
+                "comment": "新增集团",
+                "id": "createGroup",
+                "uri": "/api/group/create",
+                "http-method": "get/post",
+                "controller": "$groupController",
+                "handler": "create",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "读取集团信息",
+                "id": "readGroup",
+                "uri": "/api/group/read/:groupId",
+                "http-method": "get",
+                "controller": "$groupController",
+                "handler": "read",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "修改集团用户信息",
+                "id": "updateGroup",
+                "uri": "/api/group/update/:groupId",
+                "http-method": "get/post",
+                "controller": "$groupController",
+                "handler": "update",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "删除集团用户",
+                "id": "deleteGroup",
+                "uri": "/api/group/delete/:groupId",
+                "http-method": "get/post",
+                "controller": "$groupController",
+                "handler": "delete",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "查询集团列表",
+                "id": "listGroup",
+                "uri": "/api/group/list",
+                "http-method": "get",
+                "controller": "$groupController",
+                "handler": "list",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "查询所有集团的名称（自动补齐使用）",
+                "id": "listGroupNames",
+                "uri": "/api/group/autocomplete",
+                "http-method": "get",
+                "controller": "$groupController",
+                "handler": "autocomplete",
+                "filters": ["$privilegeFilter"]
+        },
+        {
+                "comment": "分配设备给集团",
+                "id": "addGroupDevice",
+                "uri": "/api/group/addDevice/:groupId",
+                "http-method": "get/post",
+                "controller": "$groupController",
+                "handler": "addDevice",
+                "filters": ["$privilegeFilter"]
+
+        },
+        {
+                "comment": "分配设备给集团(excle)",
+                "id": "addGroupDeviceBatch",
+                "uri": "/api/group/addDeviceBatch/:groupId",
+                "http-method": "get/post",
+                "controller": "$groupController",
+                "handler": "addDeviceBatch",
+                "filters": ["$privilegeFilter"]
+
+        }
+]

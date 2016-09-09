@@ -1,0 +1,42 @@
+[
+        {
+                "name-CN": "朗申云卫士",
+                "name": "longset",
+                "id": "ixvElOqZCBAPKaYqNjduA8",
+                "key": "HhZtKAWFoS7SpP5d3E5Cv4",
+                "secret": "AhGYzwoENI6TjmQB4PQtG6",
+                "masterSecret": "bIaVoBekegAntbf98h1R43"
+        },
+        {
+                "name-CN": "通广E线牵",
+                "name": "tongguang",
+                "id": "CvEIeP9MhhAOrDzv5PIAM",
+                "key": "pxHEAOFyxg7xSQsA2lEun4",
+                "secret": "5S2eVpb6H7Ag9Lh8O85uk",
+                "masterSecret": "NYoVodg000AsX3i11oTgI8"
+        },
+        {
+                "name-CN": "中斗移动版",
+                "name": "10086ln",
+                "id": "wtcdEERSTQ8Yiy6JbVUHz1",
+                "key": "05ulpOLVYAAIHqAqDLkUy8",
+                "secret": "ngrMcUBU9I7q4FdGxZBUo1",
+                "masterSecret": "dXWZqRrUad6nAyics2TV9A"
+        },
+        {
+                "name-CN": "中斗智慧校园",
+                "name": "zhongdou",
+                "id": "XbwVVrJXgY9icniE7JyTb3",
+                "key": "Jdbpnte88l6vKgwr6Tnkt8",
+                "secret": "odmZ1TYltk7EoNYsZgjGe8",
+                "masterSecret": "9XThzMom4L7JZH2g2qvqiA"
+        },
+        {
+                "name-CN": "智慧云教育",
+                "name": "zhongdouzh",
+                "id": "6K8qhmvRg9AD5MzIq1yLB",
+                "key": "LEBsscc9QVA4IHFzWMknl7",
+                "secret": "shzvdNSeib73gTQO86J9U4",
+                "masterSecret": "oti8QX1EQ17wVAoi2vxlk4"
+        }
+]

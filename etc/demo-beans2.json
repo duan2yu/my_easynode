@@ -1,0 +1,12 @@
+{
+        "bean4" : {
+                "class" : "easynode.Notation",
+                "props" : {
+                        "bookshelf" : "$bean2.bookshelf"
+                }
+        },
+        "test2Controller" : {
+                "class" : "easynode.tests.controllers.Test2Controller",
+                "scope" : "singleton"
+        }
+}

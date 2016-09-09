@@ -1,0 +1,7 @@
+{
+        "@import": [
+                "./site-api-beans-basic.json",
+                "./site-api-beans-constants.json",
+                "./site-api-beans-controllers.json"
+        ]
+}

@@ -1,0 +1,10 @@
+{
+        "adminSessionController" : {
+                "class" : "cn.beneverse.xzcxw.admin.controllers.AdminSessionController",
+                "scope" : "singleton",
+                "props" : {
+                        "bookshelf" : "$bookshelf",
+                        "constants" : "$constants"
+                }
+        }
+}

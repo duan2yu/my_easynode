@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>设备列表</title>
+    <link rel="stylesheet" href="../bootstrap-3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap-3.3.4/css/bootstrap-select.css">
+    <link rel="stylesheet" href="../bootstrap-3.3.4/css/bootstrap-datetimepicker.min.css">
+    <script src="../js/lib/jquery-1.11.3.min.js"></script>
+    <script src="../js/lib/angular-1.3.16.min.js"></script>
+    <script src="../bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script src="../bootstrap-3.3.4/js/bootstrap-select.js"></script>
+    <script src="../bootstrap-3.3.4/js/bootstrap-paginator.js"></script>
+    <script src="../bootstrap-3.3.4/js/bootstrap-datetimepicker.js"></script>
+    <script src="js/jquery-migrate-1.1.0.js"></script>
+    <script src="js/jquery.jqprint-0.3.js"></script>
+    <script src="../js/src/easynode-ployfill.js"></script>
+    <script src="js/ccms-equipment-list.js"></script>
+</head>
+<body ng-controller="orderList">
+<!--# include file="inc/nav.html" -->
+<div class="container">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                    </div>
+
+                    <form class="navbar-form navbar-right" role="search" id="1276417328">
+                        <div class="form-group">
+                            <select class="selectpicker bs-select-hidden" ng-change="queryList()" ng-model="orderScope">
+                                <option value="all">所有设备</option>
+                                <option value="expired">到期设备</option>
+                                <option value="expiring">即将到期设备</option>
+                            </select>
+                            <select class="selectpicker bs-select-hidden" ng-change="SelectChange(orderProp)" ng-model="orderProp">
+                                <option value="terminalId">设备编号</option>
+                                <option value="batchNumber">生产批次</option>
+                                <option value="simNumber">智机通号</option>
+                                <!--<option value="simBegindate">开卡日期</option>-->
+                                <!--<option value="simEnddate">到期时间</option>-->
+                                <option value="customerName">客户名称</option>
+                            </select>
+
+                            <div class="input-group">
+                                <input type="text" class="form-control" ng-model="queryKey" name="keyword" id="inputKey"
+                                       placeholder=""/>
+
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" ng-click="queryList(1)"
+                                            type="submit"><i
+                                            class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <button type="submit" onclick="$('#List').jqprint()"
+                                    class="btn btn-default">打印
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <!-- .container-fluid -->
+            </nav>
+
+            <table class="table table-bordered" id="List">
+                <thead>
+                <tr>
+                    <th class="">设备编号</th>
+                    <th class="">生产批次</th>
+                    <th class="">智机通号</th>
+                    <th class="">开卡日期</th>
+                    <th class="">到期时间</th>
+                    <th class="">客户名称</th>
+                    <th class="">总金额</th>
+                    <th class="">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr ng-repeat="list in list|filter:query">-->
+                <tr ng-repeat="list in List ">
+
+                    <td>{{list.terminalId}}</td>
+                    <td>{{list.batchNumber}}</td>
+                    <td><a ng-click="queryRechargeRecord(list.simNumber)" target="_blank">{{list.simNumber}}</a>
+                    </td>
+                    <td>{{ DateTostring(list.simBegindate)}}</td>
+                    <td>{{DateTostring(list.simEnddate)}}</td>
+                    <td>{{list.customerName}}</td>
+                    <td>{{list.totalAmount}}</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="...">
+                            <a class="btn btn-default" ng-click="viewOrder(list.orderId)"
+                               target="_blank"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a>
+                            <a class="btn btn-default" ng-click="editOrder(list.orderId)"
+                               target="_blank"><span
+                                    class="glyphicon glyphicon-pencil"
+                                    aria-hidden="true"></span></a>
+                            <a class="btn btn-default" data-toggle="modal" orderId="{{list.orderId}}"
+                               rechargeUser="{{list.customerName}}"
+                               simNumber="{{list.simNumber}}" simEnddate="{{list.simEnddate}}"
+                               ng-click="ToRenewals($event)"><span class="glyphicon glyphicon-usd"
+                                                                   aria-hidden="true"></span></a>
+                            <a class="btn btn-default" ng-click="deleteOrder(list.orderId)"><span
+                                    class="glyphicon glyphicon-remove"
+                                    aria-hidden="true"></span></a>
+                        </div>
+                    </td>
+                </tr>
+
+                </tbody>
+
+            </table>
+            <div id="page1" class="text-right">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">续费</h4>
+            </div>
+            <div class="modal-body ">
+                <form class="form-inline">
+                    <div class="form-group ">
+
+                        <label>到期时间:</label>
+
+                        <input id="expiryDate" value="" readonly ng-model="param.expiryDate"
+                               data-date-format="yyyy-mm-dd" type="text" class="form-control">
+
+                        <label>金额:</label>
+                        <input type="text" ng-model="param.rechargeAmount" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" ng-click="Renewals()" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

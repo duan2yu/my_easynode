@@ -1,0 +1,42 @@
+{
+        "BASIC": [
+                {
+                        "action-name": "login",
+                        "action-class": "cn.beneverse.xzcxw.admin.actions.UserLogin",
+                        "description": "用户登录",
+                        "enabled": true
+                },
+                {
+                        "action-name": "logout",
+                        "action-class": "cn.beneverse.xzcxw.admin.actions.UserLogout",
+                        "description": "用户登出",
+                        "enabled": true
+                },
+                {
+                        "action-name": "lu",
+                        "action-class": "cn.beneverse.xzcxw.admin.actions.GetLoginUser",
+                        "description": "获取当前会话中登录的用户",
+                        "enabled": true
+                },
+                {
+                        "action-name": "checkUser",
+                        "action-class": "cn.beneverse.xzcxw.admin.actions.CheckUser",
+                        "description": "检查用户是否存在",
+                        "enabled": true
+                }
+        ],
+        "cmsCatalog": [
+                {
+                        "action-name": "getChildCode",
+                        "action-class": "cn.beneverse.xzcxw.admin.actions.GetChildCode",
+                        "description": "获取下级目录code",
+                        "enabled": true
+                },
+                {
+                        "action-name": "getChildNodes",
+                        "action-class": "cn.beneverse.xzcxw.admin.actions.GetChildNodes",
+                        "description": "获取下级目录",
+                        "enabled": true
+                }
+        ]
+}

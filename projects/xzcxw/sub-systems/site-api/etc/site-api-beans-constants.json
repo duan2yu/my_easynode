@@ -1,0 +1,8 @@
+{
+        "constants" : {
+                "class" : "easynode.Notation",
+                "scope" : "singleton",
+                "props" : {
+                }
+        }
+}

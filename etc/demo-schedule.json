@@ -1,0 +1,8 @@
+[
+        {
+                "name" : "schedule-test",
+                "description" : "测试计划任务",
+                "cron-express" : "* * * * * *",
+                "executor" : "$executorBeanId"
+        }
+]

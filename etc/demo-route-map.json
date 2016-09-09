@@ -1,0 +1,39 @@
+[
+        "@import(./demo-route-map2.json)",
+        "@factory(easynode.tests.DemoRouteFactory)",
+        {
+                "uri": "/test/:id",
+                "http-method": "get/post",
+                "controller": "easynode.tests.controllers.TestController",
+                "handler": "test",
+                "content-type": "application/json",
+                "filters" : [
+                        "$loginFilter"
+                ]
+        },
+        {
+                "uri": "/test1",
+                "http-method": "get/post",
+                "controller": "easynode.tests.controllers.TestController",
+                "handler": "test1",
+                "content-type": "text/html",
+                "view": "demo.mst",
+                "view-dir": "views/demo"
+        },
+        {
+                "uri": "/test1-1",
+                "http-method": "get",
+                "controller": "easynode.tests.controllers.TestController",
+                "handler": "test",
+                "content-type": "text/html",
+                "view": "demo/demo.mst",
+                "view-dir": ""
+        },
+        {
+                "uri": "/test2",
+                "http-method": "get",
+                "controller": "$test2Controller",
+                "handler": "test2Demo",
+                "content-type": "application/json"
+        }
+]

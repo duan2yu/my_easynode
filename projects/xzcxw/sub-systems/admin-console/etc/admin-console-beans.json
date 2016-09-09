@@ -1,0 +1,7 @@
+{
+        "@import": [
+                "./admin-console-beans-basic.json",
+                "./admin-console-beans-constants.json",
+                "./admin-console-beans-controllers.json"
+        ]
+}

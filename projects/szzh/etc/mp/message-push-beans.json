@@ -1,0 +1,40 @@
+{
+        "redisQueue" : {
+                "class" : "easynode.framework.mq.RedisListQueue",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        "$str(redis.host)",
+                        "$int(redis.port)",
+                        {
+                                "masterName" : "$str(redis.masterName)",
+                                "auth_pass" : "$str(redis.password)"
+                        }
+                ],
+                "props" : {
+                }
+        },
+        "clientInfoCache" : {
+                "class" : "easynode.framework.cache.Redis",
+                "scope" : "singleton",
+                "init" : "initialize",
+                "init-args" : [
+                        "$str(redis.host)",
+                        "$int(redis.port)",
+                        {
+                                "masterName" : "$str(redis.masterName)",
+                                "auth_pass" : "$str(redis.password)"
+                        }
+                ],
+                "props" : {
+                }
+        },
+        "mongodbOpts" : {
+                "class" : "easynode.framework.util.ObjectWrapper",
+                "scope" : "singleton",
+                "props" : {
+                        "opts" : {
+                        }
+                }
+        }
+}

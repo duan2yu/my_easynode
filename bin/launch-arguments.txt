@@ -1,0 +1,12 @@
+EasyNode启动参数：
+
+--main-class : * 启动类，它必须包含一个名为main的静态generator函数
+--bean-definitions : Bean定义文件，使用","分隔多个Bean定义文件（相对于EasyNode根目录的路径）
+--src-dirs : 需要额外加载的源码目录，使用","分隔多个源码目录（相对于EasyNode根目录的路径）
+--config-files : 需要额外加载的配置文件，使用","分隔多个配置文件（相对于EasyNode根目录的路径）
+--project : 需要加载的项目资源，将projects/$project目录作为项目目录，加载projects/$project/src为源码目录（必须有），加载projects/$project/etc/$project.conf为配置文件（如果存在），加载projects/$project/etc/i18n/为国际化配置文件目录（如果存在）
+--debug-output : 调试输出，true/false
+--enable-v8-profiler : v8-profiler调试，true/false
+--locale : 语言，默认zh_CN
+
+** 其他所有配置文件中的配置项都可以通过启动参数修改。
