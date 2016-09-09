@@ -4,8 +4,8 @@
   "private": true,
   "description": "A fullstack javascript framework. Features : Plug-in, MVC, auto-modeling, Http(based on koa), TCP, Websocket, restful-like, SPA, seajs, Bootstrap.",
   "author": {
-    "name": "zlbbq",
-    "email": "zlbbq@163.com",
+    "name": "dsj",
+    "email": "190209361@qq.com",
     "url": "about:blank"
   },
   "dependencies": {
