@@ -1,0 +1,2 @@
+HELLO, Mustache. <br/>
+Result Code : {{#fmt.fixed2}}{{code}}{{/fmt.fixed2}}
